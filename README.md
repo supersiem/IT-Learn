@@ -9,7 +9,7 @@
 - [ ] landing page met uitleg over de website
 - [ ] keuze tussen dark en light mode
 - [ ] syntax highlighten als user zelf moet schrijven
-- [ ] links vanonder url naar discord (zoals smpp)
+- [X] links vanonder url naar discord (zoals smpp)
 - [ ] css over pading, margings, ...
 - [ ] js over lussen, variabelen, functions, ...
 - [ ] inlog systeem
