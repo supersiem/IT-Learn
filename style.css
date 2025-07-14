@@ -212,11 +212,12 @@ legend {
   cursor: pointer;
   z-index: 10;
   transform: scale(1);
-  transition: transform 0.3 ease;
+  transition: transform 0.3s ease;
 }
 
 #darkmode-toggle:hover {
 transform: scale(1.2);
+transform: rotate(180deg);
 }
 
 .discord-button {
