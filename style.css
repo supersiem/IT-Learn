@@ -252,7 +252,7 @@ body.dark-mode #modules-list button {
   width: 100%;
   padding: 0.7rem 1rem;
   font-size: 1.1rem;
-  background: linear-gradient(to bottom, #570264, #770988);
+  background: linear-gradient(to bottom, #570264, #b411cd);
   background-size: 100% 200%;
   background-position: top;
   transition: background-position 0.4s ease;
