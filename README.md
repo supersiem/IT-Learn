@@ -1,6 +1,7 @@
 # IT-Learn
 
 # To Do lijst:
+- [ ] darkmode standaard maken
 - [ ] lessen beter maken
 - [ ] meer lessen maken
 - [X] logo maken
