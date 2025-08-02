@@ -29,7 +29,7 @@
 # 🌐 Responsiviteit (werkt op alle apparaten)
  - [X] Laptop
 
- - [X] GSM (Op Gsm in de mascotte een beetje groot)
+ - [ ] GSM
 
  - [ ] Tablet
 
@@ -39,3 +39,11 @@
  - [ ] Inlogsysteem
 
  - [ ] Voortgang per account opslaan
+
+# 🪲 Bugs
+---IOS
+- [ ] paarse header gaat niet ver genoeg naar boven (vanboven is er dan een witte lijn)
+- [ ] masscote is te groot (kan niet alle tekst lezen daardoor)
+- [ ] maantje en zonnetje voor darkmode-toggle staan omgekeerd
+- [ ] border rond quizen doet raar door hoeveelheid tekst erin
+- [ ] tekst bij 'toegankelijkheid' in HTML gaat off-screen
