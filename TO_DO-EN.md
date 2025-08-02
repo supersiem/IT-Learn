@@ -1,57 +1,57 @@
-✅ IT-Learn – To Do List
-📚 Content & Lessons
+# ✅ IT-Learn – To Do List
+# 📚 Content & Lessons
 
-Improve existing lessons (clearer, more detailed, more interactive)
+- [ ] Improve existing lessons (clearer, more detailed, more interactive)
 
-Add new lessons
+- [ ] Add new lessons
 
-CSS lessons about padding, margin, etc.
+- [ ] CSS lessons about padding, margin, etc.
 
-JavaScript lessons about loops, variables, functions, ...
+- [ ] JavaScript lessons about loops, variables, functions, ...
 
-Add syntax highlighting when writing code
+- [ ] Add syntax highlighting when writing code
 
-Leaderboard + badges for completing lessons
+- [ ] Leaderboard + badges for completing lessons
 
-Multilingual support (NL & ENG – Joren is working on this)
+- [ ] Multilingual support (NL & ENG – Joren is working on this)
 
-🎨 Design & UI
+# 🎨 Design & UI
 
-Design logo
+- [X] Design logo
 
-New/better CSS styles
+- [X] New/better CSS styles
 
-Support for dark/light mode
+- [X] Support for dark/light mode
 
-Footer with a link to Discord (like SMPP)
+- [X] Footer with a link to Discord (like SMPP)
 
-CSS: Creating gradients
+- [X]CSS: Creating gradients
 
-🌐 Responsiveness (works on all devices)
+# 🌐 Responsiveness (works on all devices)
 
-Laptop
+- [X] Laptop
 
-Mobile phone
+- [ ]Mobile phone
 
-Tablet
+- [ ]Tablet
 
-🌍 Website structure
+# 🌍 Website structure
 
-Landing page with explanation about the platform
+- [ ]Landing page with explanation about the platform
 
-Login system
+- [ ]Login system
 
-Save progress per account
+- [ ]Save progress per account
 
-🪲 Bugs
-— iOS
+# 🪲 Bugs
+--- iOS
 
-Purple header doesn’t go all the way to the top (there’s a white line at the top)
+- [ ] Purple header doesn’t go all the way to the top (there’s a white line at the top)
 
-Mascot is too big (can’t read all the text because of this)
+- [ ] Mascot is too big (can’t read all the text because of this)
 
-Moon and sun icons for dark mode toggle are reversed
+- [ ] Moon and sun icons for dark mode toggle are reversed
 
-Border around quizzes behaves strangely due to the amount of text inside
+- [ ] Border around quizzes behaves strangely due to the amount of text inside
 
-Text under ‘Toegankelijkheid’ in HTML goes off-screen
+- [ ]Text under ‘Toegankelijkheid’ in HTML goes off-screen
