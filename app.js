@@ -56,7 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-
 // --- Helper functies ---
 
 function saveProgress() {
@@ -145,6 +144,42 @@ function isModuleUnlocked(moduleId) {
   return progress[prev.id] && Object.keys(progress[prev.id]).length === prev.lessons.length;
 }
 
+// ** Aangepaste functie **: bij klikken module eerst lessenlijst tonen
+function showLessonsList(moduleId) {
+  currentModule = modulesData.find(m => m.id === moduleId);
+  if (!currentModule) return;
+
+  // Verberg modules lijst
+  document.getElementById("modules-list").classList.add("hidden");
+
+  // Verberg quiz sectie, toon les sectie
+  quizSection.classList.add("hidden");
+  lessonSection.classList.remove("hidden");
+  submitQuizBtn.style.display = "none";
+  quizFeedback.textContent = "";
+  nextLessonBtn.classList.add("hidden");
+  backToModulesBtn.style.display = "inline-block";
+
+  lessonTitle.textContent = `Lessen in ${currentModule.title}`;
+  
+  // Lessen lijst maken
+  lessonContent.innerHTML = "";
+  const ul = document.createElement("ul");
+  currentModule.lessons.forEach((lesson, index) => {
+    const li = document.createElement("li");
+    const btn = document.createElement("button");
+    btn.textContent = lesson.title;
+    btn.addEventListener("click", () => {
+      showLesson(moduleId, index);
+    });
+    li.appendChild(btn);
+    ul.appendChild(li);
+  });
+  lessonContent.appendChild(ul);
+
+  showMascotMessage(`Kies een les in module "${currentModule.title}"`);
+}
+
 function showModules() {
   lessonSection.classList.add("hidden");
   document.getElementById("modules-list").classList.remove("hidden");
@@ -193,7 +228,7 @@ function renderModuleButtons() {
     btn.textContent = mod.title;
     btn.disabled = false;
     btn.addEventListener("click", () => {
-      showLesson(mod.id, 0);
+      showLessonsList(mod.id);  // aangepast: eerst lessen lijst tonen
     });
     li.appendChild(btn);
     moduleButtons.appendChild(li);
@@ -336,42 +371,34 @@ submitQuizBtn.addEventListener("click", () => {
 
   if (correctCount === quiz.length) {
     quizFeedback.textContent = "Goed gedaan! Alle antwoorden kloppen.";
-    if (!progress[currentModule.id]) progress[currentModule.id] = {};
-    if (!progress[currentModule.id][lesson.id]) {
-      progress[currentModule.id][lesson.id] = true;
+    if(!isLessonCompleted(currentModule.id, lesson.id)) {
       xp += 10;
-      updateStreak();
+      markLessonCompleted(currentModule.id, lesson.id);
+      updateProgressUI();
+      saveProgress();
     }
-    saveProgress();
-    updateProgressUI();
+    correctSound.play();
     nextLessonBtn.classList.remove("hidden");
     submitQuizBtn.style.display = "none";
-    correctSound.play();
-    showMascotMessage("Je hebt de quiz gehaald! Goed zo!");
+    showMascotMessage("Je hebt deze les succesvol afgerond!");
   } else {
-    quizFeedback.textContent = `Je had ${correctCount} van de ${quiz.length} goed. Probeer het nog eens!`;
+    quizFeedback.textContent = `Je had ${quiz.length - correctCount} fout${quiz.length - correctCount !== 1 ? "en" : ""}. Probeer het nog eens!`;
     wrongSound.play();
-    showMascotMessage("Niet opgegeven! Probeer de vragen nog een keer.");
   }
 });
 
-backToModulesBtn.addEventListener("click", () => {
-  showModules();
-});
-
-nextLessonBtn.addEventListener("click", () => {
-  if (!currentModule) return;
-  if (currentLessonIndex + 1 < currentModule.lessons.length) {
-    showLesson(currentModule.id, currentLessonIndex + 1);
-  } else {
-    alert("🎉 Je hebt alle lessen in deze module afgerond!");
-    showModules();
-  }
-});
+function getMistakeCorrectAnswer(mistakeIndex) {
+  const m = mistakes[mistakeIndex];
+  const moduleObj = modulesData.find(mod => mod.id === m.moduleId);
+  if(!moduleObj) return null;
+  const lessonObj = moduleObj.lessons.find(les => les.id === m.lessonId);
+  if(!lessonObj) return null;
+  if(!lessonObj.quiz || !lessonObj.quiz[m.questionIndex]) return null;
+  return lessonObj.quiz[m.questionIndex].correct;
+}
 
 function addMistake(moduleId, lessonId, questionIndex) {
-  const exists = mistakes.find(m => m.moduleId === moduleId && m.lessonId === lessonId && m.questionIndex === questionIndex);
-  if (!exists) {
+  if (!mistakes.some(m => m.moduleId === moduleId && m.lessonId === lessonId && m.questionIndex === questionIndex)) {
     mistakes.push({ moduleId, lessonId, questionIndex });
     saveProgress();
   }
@@ -382,72 +409,68 @@ function removeMistake(moduleId, lessonId, questionIndex) {
   saveProgress();
 }
 
-function getMistakeCorrectAnswer(index) {
-  const mistake = mistakes[index];
-  if (!mistake) return null;
-  const moduleObj = modulesData.find(mod => mod.id === mistake.moduleId);
-  if (!moduleObj) return null;
-  const lessonObj = moduleObj.lessons.find(les => les.id === mistake.lessonId);
-  if (!lessonObj) return null;
-  if (!lessonObj.quiz || !lessonObj.quiz[mistake.questionIndex]) return null;
-  return lessonObj.quiz[mistake.questionIndex].correct;
+function isLessonCompleted(moduleId, lessonId) {
+  return progress[moduleId] && progress[moduleId][lessonId];
 }
 
-// Mascotte berichten
+function markLessonCompleted(moduleId, lessonId) {
+  if (!progress[moduleId]) progress[moduleId] = {};
+  progress[moduleId][lessonId] = true;
+}
 
-const mascotMessages = [
-  "Hoi! Klaar om iets te leren vandaag?",
-  "Goed bezig, hou vol!",
-  "Vergeet niet pauzes te nemen.",
-  "Elke dag een beetje beter!",
-  "Leer vandaag iets nieuws!",
-  "Super! Ga zo door!",
-  "Heb je vragen? Stel ze gerust.",
-  "Fouten maken mag, daarvan leer je!",
-  "Top dat je terug bent!",
-  "Blijf nieuwsgierig!"
-];
+nextLessonBtn.addEventListener("click", () => {
+  if (!currentModule) return;
+  if (currentLessonIndex + 1 < currentModule.lessons.length) {
+    showLesson(currentModule.id, currentLessonIndex + 1);
+  } else {
+    showModules();
+  }
+});
 
+backToModulesBtn.addEventListener("click", () => {
+  showModules();
+});
+
+// Toon mascotte bericht
 function showMascotMessage(message) {
   mascotBubble.textContent = message;
+  mascotBubble.classList.add("visible");
+  setTimeout(() => {
+    mascotBubble.classList.remove("visible");
+  }, 5000);
 }
 
-function randomMascotMessage() {
-  const msg = mascotMessages[Math.floor(Math.random() * mascotMessages.length)];
-  showMascotMessage(msg);
-}
-
-
-// Blcok developer tools
+// Blokkeer ontwikkelaarstools
   document.addEventListener('keydown', function (e) {
-    // Block F12
+    // Blokkeer F12
     if (e.key === 'F12') {
       e.preventDefault();
     }
 
-    // Block Ctrl+Shift+I
+    // Blokkeer Ctrl+Shift+I
     if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'i') {
       e.preventDefault();
     }
 
-    // Block Ctrl+Shift+J (DevTools console)
+    // Blokkeer Ctrl+Shift+J (DevTools console)
     if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'j') {
       e.preventDefault();
     }
 
-    // Block Ctrl+U (View Source)
+    // Blokkeer Ctrl+U (View Source)
     if (e.ctrlKey && e.key.toLowerCase() === 'u') {
       e.preventDefault();
     }
   });
 
-  // Block right click
+  // Blokkeer rechtermuisklik
   document.addEventListener('contextmenu', function (e) {
     e.preventDefault();
   });
 
+
+// Init
 updateProgressUI();
 updateStreak();
 showModules();
 randomMascotMessage();
-
