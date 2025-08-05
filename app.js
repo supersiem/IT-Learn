@@ -417,7 +417,37 @@ function randomMascotMessage() {
   showMascotMessage(msg);
 }
 
+
+// Blcok developer tools
+  document.addEventListener('keydown', function (e) {
+    // Block F12
+    if (e.key === 'F12') {
+      e.preventDefault();
+    }
+
+    // Block Ctrl+Shift+I
+    if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'i') {
+      e.preventDefault();
+    }
+
+    // Block Ctrl+Shift+J (DevTools console)
+    if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'j') {
+      e.preventDefault();
+    }
+
+    // Block Ctrl+U (View Source)
+    if (e.ctrlKey && e.key.toLowerCase() === 'u') {
+      e.preventDefault();
+    }
+  });
+
+  // Block right click
+  document.addEventListener('contextmenu', function (e) {
+    e.preventDefault();
+  });
+
 updateProgressUI();
 updateStreak();
 showModules();
 randomMascotMessage();
+
