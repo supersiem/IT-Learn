@@ -37,7 +37,7 @@
 
 # 🌍 Website structure
 
-- [ ] Landing page with explanation about the platform
+- [X] Landing page with explanation about the platform
 
 - [ ] Login system
 
