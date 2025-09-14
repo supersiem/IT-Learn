@@ -34,7 +34,7 @@
  - [ ] Tablet
 
 # 🌍 Website structuur
- - [ ] Landing page met uitleg over het platform
+ - [X] Landing page met uitleg over het platform
 
  - [ ] Inlogsysteem
 
