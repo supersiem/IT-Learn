@@ -26,6 +26,8 @@
 
  - [X] CSS: Gradients maken
 
+ - [ ] maak de favicon.ico afgerond
+
 # 🌐 Responsiviteit (werkt op alle apparaten)
  - [X] Laptop
 
