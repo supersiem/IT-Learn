@@ -41,8 +41,10 @@
  - [ ] Voortgang per account opslaan
 
 # 🪲 Bugs
+- [ ] mogelijk probleem: terms and conditions niet moeten accepteren als je via google oauth acc maakt.
 ---IOS
 - [ ] paarse header gaat niet ver genoeg naar boven (vanboven is er dan een witte lijn)
 - [ ] masscote is te groot (kan niet alle tekst lezen daardoor)
 - [ ] border rond quizen doet raar door hoeveelheid tekst erin
 - [ ] tekst bij 'toegankelijkheid' in HTML gaat off-screen
+      
