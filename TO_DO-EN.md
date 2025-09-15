@@ -44,6 +44,8 @@
 - [ ] Save progress per account
 
 # 🪲 Bugs
+- [ ] possible problem: it could be possible that you don't need to accept terms and conditions when you make an acc via google oauth
+
 --- iOS
 
 - [ ] Purple header doesn’t go all the way to the top (there’s a white line at the top)
