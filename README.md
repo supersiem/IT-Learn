@@ -17,7 +17,7 @@ With IT Learn, you can explore and practice programming languages like: HTML, CS
 
 🔐 Account system to track your progress
 
-🛠️ Work in Progress
+# 🛠️ Work in Progress
 Our developers are actively working on improving the platform!
 Here’s what’s coming soon:
 
