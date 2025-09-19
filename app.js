@@ -566,8 +566,25 @@ document.addEventListener('contextmenu', function (e) {
   e.preventDefault();
 });
 
+// ---------------------------- Code Editor ---------------------------- 
+function runCode(id) {
+  const code = document.getElementById(`code-editor-${id}`).value;
+  const iframe = document.getElementById(`output-frame-${id}`);
+  
+  iframe.srcdoc = `
+    <style>
+      body {
+        background: #0f172a;
+        color: #fff; /* tekst in output wit */
+        font-family: sans-serif;
+      }
+    </style>
+    ${code}
+  `;
+}
 // ---------------------------- Init ----------------------------
 // Ensure UI and streak updated from whichever source (localStorage or Supabase)
 updateProgressUI();
 updateStreak();
 showModules();
+
