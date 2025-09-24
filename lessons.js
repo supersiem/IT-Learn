@@ -920,55 +920,177 @@ p.groet()</code></pre>
       ]
     },
 
-// ================= Cybersecurity =================
-{
-  id: "cybersecurity",
-  title: "Cybersecurity",
-  lessons: [
+    // ================= Cybersecurity =================
     {
-      id: "phishing-mail-1",
-      title: "Oefening: herken de scam-mail",
-      content: `
-        <p>Bekijk de onderstaande e-mail zorgvuldig. Klik op elk onderdeel dat verdacht lijkt (de blauwe vakjes).</p>
-        <div id="mail-exercise-root" class="mail-view"></div>
-      `, 
-      quiz: [
+      id: "cybersecurity",
+      title: "Cybersecurity",
+      lessons: [
         {
-          type: "mail",
-          mailHtml: `
+          id: "phishing-mail-1",
+          title: "Exercise: recognize the phishing email",
+          content: `
+        <p>Please review the email below carefully. Click on any suspicious elements.</p>
+        <div id="mail-exercise-root" class="mail-view"></div>
+      `,
+          quiz: [
+            {
+              type: "mail",
+              mailHtml: `
             <div class="mail-view">
-              <div class="mail-toolbar">
-                <button>Reply</button>
-                <button>Forward</button>
-                <button>More</button>
-              </div>
+              <div class="mail-toolbar"></div>
               <div class="mail-headers">
-                <div><strong>Van:</strong> support@apple-free-gift.ru</div>
-                <div><strong>Aan:</strong> My@example.com</div>
-                <div class="mail-subject">Uw Apple-account wordt gesloten!</div>
+                <div>
+                  <strong>From:</strong>
+                  <span data-id="from1" class="mail-element">support@apple-free-gift.ru</span>
+                </div>
+                <div>
+                  <strong>To:</strong>
+                  <span data-id="to1" class="mail-element">My@example.com</span>
+                </div>
+                <div class="mail-subject">
+                  <span data-id="sub1" class="mail-element">Your</span>
+                  <span data-id="sub2" class="mail-element">Apple</span>
+                  <span data-id="sub3" class="mail-element">account</span>
+                  <span data-id="sub4" class="mail-element">will</span>
+                  <span data-id="sub5" class="mail-element">be</span>
+                  <span data-id="sub6" class="mail-element">closed!</span>
+                </div>
               </div>
               <div class="mail-body">
-                <p>Beste gebruiker,</p>
-                <p>We hebben verdachte activiteit gedetecteerd op uw account. Als u niet binnen 24 uur 
-                  <span data-id="link" class="mail-element">hier klikt</span>, wordt uw account per direct gesloten.
+                <p>
+                  <span data-id="p1" class="mail-element">Dear</span>
+                  <span data-id="p2" class="mail-element">user,</span>
                 </p>
-                <p>Om uw account te beschermen, klik op 
-                  <span data-id="link2" class="mail-element">http://apple-secure-login-verify.com</span> en voer uw gegevens in.
+                <p>
+                  <span data-id="p3" class="mail-element">We</span>
+                  <span data-id="p4" class="mail-element">have</span>
+                  <span data-id="p5" class="mail-element">detected</span>
+                  <span data-id="p6" class="mail-element">suspicious</span>
+                  <span data-id="p7" class="mail-element">activity</span>
+                  <span data-id="p8" class="mail-element">on</span>
+                  <span data-id="p9" class="mail-element">your</span>
+                  <span data-id="p10" class="mail-element">account.</span>
+                  <span data-id="link" class="mail-element">If</span>
+                  <span data-id="link2" class="mail-element">you</span>
+                  <span data-id="link3" class="mail-element">do</span>
+                  <span data-id="link4" class="mail-element">not</span>
+                  <span data-id="link5" class="mail-element">respond</span>
+                  <span data-id="link6" class="mail-element">within</span>
+                  <span data-id="link7" class="mail-element">24</span>
+                  <span data-id="link8" class="mail-element">hours</span>
+                  <span data-id="link9" class="mail-element">by</span>
+                  <span data-id="link10" class="mail-element">clicking</span>
+                  <span data-id="link11" class="mail-element">on</span>
+                  <span data-id="link12" class="mail-element">the</span>
+                  <span data-id="link13" class="mail-element">link</span>
+                  <span data-id="link14" class="mail-element">below,</span>
+                  <span data-id="p11" class="mail-element">your</span>
+                  <span data-id="p12" class="mail-element">account</span>
+                  <span data-id="p13" class="mail-element">will</span>
+                  <span data-id="p14" class="mail-element">be</span>
+                  <span data-id="p15" class="mail-element">closed</span>
+                  <span data-id="p16" class="mail-element">immediately.</span>
                 </p>
-                <p>Met vriendelijke groet,<br>
+                <p>
+                  <span data-id="p17" class="mail-element">To</span>
+                  <span data-id="p18" class="mail-element">protect</span>
+                  <span data-id="p19" class="mail-element">your</span>
+                  <span data-id="p20" class="mail-element">account,</span>
+                  <span data-id="p21" class="mail-element">click</span>
+                  <span data-id="link1" class="mail-element">http://apple-secure-login-verify.com</span>
+                  <span data-id="p22" class="mail-element">and</span>
+                  <span data-id="p23" class="mail-element">enter</span>
+                  <span data-id="p24" class="mail-element">your</span>
+                  <span data-id="p25" class="mail-element">details.</span>
+                </p>
+                <p>
+                  <span data-id="p26" class="mail-element">Yours</span>
+                  <span data-id="p27" class="mail-element">sincerely,</span><br>
                   <span data-id="sig" class="mail-element">Apple Support Team</span>
                 </p>
               </div>
             </div>
           `,
-          elements: [
-            { id: "link", selector: '[data-id="link"]', correct: true, explain: "Vage oproep tot klikken met urgentie — typische phishingtactiek." },
-            { id: "link2", selector: '[data-id="link2"]', correct: true, explain: "De URL is niet het officiële apple.com-domein." },
-            { id: "sig", selector: '[data-id="sig"]', correct: false, explain: "Handtekening lijkt normaal, maar is niet het bewijs dat alles goed is." }
+              elements: [
+                { id: "p1", selector: '[data-id="p1"]', correct: false, explain: "Common greeting, not suspicious." },
+                { id: "p2", selector: '[data-id="p2"]', correct: false, explain: "Common greeting, not suspicious." },
+                { id: "p3", selector: '[data-id="p3"]', correct: false, explain: "Normal wording." },
+                { id: "p4", selector: '[data-id="p4"]', correct: false, explain: "Normal wording." },
+                { id: "p5", selector: '[data-id="p5"]', correct: false, explain: "Normal wording." },
+                { id: "p6", selector: '[data-id="p6"]', correct: false, explain: "Normal wording." },
+                { id: "p7", selector: '[data-id="p7"]', correct: false, explain: "Normal wording." },
+                { id: "p8", selector: '[data-id="p8"]', correct: false, explain: "Normal wording." },
+                { id: "p9", selector: '[data-id="p9"]', correct: false, explain: "Normal wording." },
+                { id: "p10", selector: '[data-id="p10"]', correct: false, explain: "Normal wording." },
+                { id: "p11", selector: '[data-id="p11"]', correct: false, explain: "Normal wording." },
+                { id: "p12", selector: '[data-id="p12"]', correct: false, explain: "Normal wording." },
+                { id: "p13", selector: '[data-id="p13"]', correct: false, explain: "Normal wording." },
+                { id: "p14", selector: '[data-id="p14"]', correct: false, explain: "Normal wording." },
+                { id: "p15", selector: '[data-id="p15"]', correct: false, explain: "Normal wording." },
+                { id: "p16", selector: '[data-id="p16"]', correct: false, explain: "Normal wording." },
+                { id: "p17", selector: '[data-id="p17"]', correct: false, explain: "Normal wording." },
+                { id: "p18", selector: '[data-id="p18"]', correct: false, explain: "Normal wording." },
+                { id: "p19", selector: '[data-id="p19"]', correct: false, explain: "Normal wording." },
+                { id: "p20", selector: '[data-id="p20"]', correct: false, explain: "Normal wording." },
+                { id: "p21", selector: '[data-id="p21"]', correct: false, explain: "Normal wording." },
+                { id: "p22", selector: '[data-id="p22"]', correct: false, explain: "Normal wording." },
+                { id: "p23", selector: '[data-id="p23"]', correct: false, explain: "Normal wording." },
+                { id: "p24", selector: '[data-id="p24"]', correct: false, explain: "Normal wording." },
+                { id: "p25", selector: '[data-id="p25"]', correct: false, explain: "Normal wording." },
+                { id: "p26", selector: '[data-id="p26"]', correct: false, explain: "Common closing, not suspicious." },
+                { id: "p27", selector: '[data-id="p27"]', correct: false, explain: "Common closing, not suspicious." },
+                { id: "link", selector: '[data-id="link"]', correct: true, explain: "Vague appeal to click with urgency — typical phishing tactic." },
+                { id: "link1", selector: '[data-id="link1"]', correct: true, explain: "The URL is not the official apple.com domain." },
+                { id: "sig", selector: '[data-id="sig"]', correct: false, explain: "Signature looks normal, but is not proof that everything is okay." },
+                { id: "from1", selector: '[data-id="from1"]', correct: true, explain: "Suspicious email domain (not apple.com)." },
+                { id: "to1", selector: '[data-id="to1"]', correct: false, explain: "Your own email address is safe." },
+                { id: "sub1", selector: '[data-id="sub1"]', correct: true, explain: "Alarmist subject line to create urgency." },
+                { id: "sub2", selector: '[data-id="sub2"]', correct: true, explain: "Alarmist subject line to create urgency." },
+                { id: "sub3", selector: '[data-id="sub3"]', correct: true, explain: "Alarmist subject line to create urgency." },
+                { id: "sub4", selector: '[data-id="sub4"]', correct: true, explain: "Alarmist subject line to create urgency." },
+                { id: "sub5", selector: '[data-id="sub5"]', correct: true, explain: "Alarmist subject line to create urgency." },
+                { id: "sub6", selector: '[data-id="sub6"]', correct: true, explain: "Alarmist subject line to create urgency." },
+                { id: "link2", selector: '[data-id="link2"]', correct: true, explain: "Vague appeal to click with urgency — typical phishing tactic." },
+                { id: "link3", selector: '[data-id="link3"]', correct: true, explain: "Vague appeal to click with urgency — typical phishing tactic." },
+                { id: "link4", selector: '[data-id="link4"]', correct: true, explain: "Vague appeal to click with urgency — typical phishing tactic." },
+                { id: "link5", selector: '[data-id="link5"]', correct: true, explain: "Vague appeal to click with urgency — typical phishing tactic." },
+                { id: "link6", selector: '[data-id="link6"]', correct: true, explain: "Vague appeal to click with urgency — typical phishing tactic." },
+                { id: "link7", selector: '[data-id="link7"]', correct: true, explain: "Vague appeal to click with urgency — typical phishing tactic." },
+                { id: "link8", selector: '[data-id="link8"]', correct: true, explain: "Vague appeal to click with urgency — typical phishing tactic." },
+                { id: "link9", selector: '[data-id="link9"]', correct: true, explain: "Vague appeal to click with urgency — typical phishing tactic." },
+                { id: "link10", selector: '[data-id="link10"]', correct: true, explain: "Vague appeal to click with urgency — typical phishing tactic." },
+                { id: "link11", selector: '[data-id="link11"]', correct: true, explain: "Vague appeal to click with urgency — typical phishing tactic." },
+                { id: "link12", selector: '[data-id="link12"]', correct: true, explain: "Vague appeal to click with urgency — typical phishing tactic." },
+                { id: "link13", selector: '[data-id="link13"]', correct: true, explain: "The URL is not the official apple.com domain." },
+                { id: "link14", selector: '[data-id="link14"]', correct: true, explain: "The URL is not the official apple.com domain."},
+                                
+              ]
+            }
           ]
         }
       ]
+    }
+  ]
+
+// Map van id → correct/fout
+const elementCorrectMap = {};
+quiz[0].elements.forEach(item => {
+  elementCorrectMap[item.id] = item.correct;
+});
+
+// Click-event
+document.querySelectorAll(".mail-element").forEach(el => {
+  el.addEventListener("click", () => {
+    el.classList.toggle("selected");
+    el.classList.remove("correct", "incorrect");
+
+    const id = el.dataset.id;
+    if (el.classList.contains("selected")) {
+      if (elementCorrectMap[id]) {
+        el.classList.add("correct");   // correct element
+      } else {
+        el.classList.add("incorrect"); // fout element
       }
-    ]
-  }
-  ];
+    }
+  });
+});
