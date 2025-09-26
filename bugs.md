@@ -1,5 +1,7 @@
 # BUGS
 
+- [ ] mogelijk probleem: kan dat er een spellingsfout is in lessons.js, line: 295  (Each HTML box has:)
+
 # IOS 
 - [ ] Signup en login button zijn te groot (header, landing-page)
 - [ ] IT Learn foto is te klein (header, landing-page)
