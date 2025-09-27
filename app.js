@@ -435,40 +435,55 @@ function buildMailExercise(quizArray) {
   submitQuizBtn.style.display = "inline-block";
   quizFeedback.textContent = "";
 
-  submitQuizBtn.onclick = () => {
-    let allCorrect = true;
+submitQuizBtn.onclick = () => {
+  const quiz = currentModule.lessons[currentLessonIndex].quiz[0];
+  const root = document.getElementById("mail-exercise-root");
+  if (!root) return;
 
-    quiz.elements.forEach(el => {
-      const element = root.querySelector(el.selector);
-      if (!element) return;
-      const selected = element.classList.contains("selected");
+  let allCorrect = true;
 
-      if (selected !== el.correct) allCorrect = false;
+  const ul = document.createElement("ul");
 
-      element.classList.remove("correct", "incorrect");
-      if (selected && el.correct) element.classList.add("correct");
-      if (selected && !el.correct) element.classList.add("incorrect");
-      if (!selected && el.correct) element.classList.add("incorrect");
-    });
+  quiz.elements.forEach(el => {
+    const element = root.querySelector(el.selector);
+    if (!element) return;
+    const selected = element.classList.contains("selected");
 
-    if (allCorrect) {
-      quizFeedback.textContent = "Goed gedaan! Alle verdachte elementen correct geselecteerd.";
-      correctSound.play();
-      xp += 10;
-      markLessonCompleted(currentModule.id, currentModule.lessons[currentLessonIndex].id);
-      updateProgressUI();
-      saveProgress();
-      nextLessonBtn.classList.remove("hidden");
-      submitQuizBtn.style.display = "none";
-      showMascotMessage("Je hebt deze les succesvol afgerond!");
-    } else {
-      quizFeedback.textContent = "Er is een of meer foutieve keuzes. Probeer opnieuw!";
-      wrongSound.play();
+    if (selected !== el.correct) allCorrect = false;
+
+    element.classList.remove("correct", "incorrect");
+    if (selected && el.correct) element.classList.add("correct");
+    if (selected && !el.correct) element.classList.add("incorrect");
+    if (!selected && el.correct) element.classList.add("incorrect");
+
+    // ⚡ Alleen uitleg tonen als het element geselecteerd is
+    if (selected) {
+      const li = document.createElement("li");
+      li.textContent = `${selected === el.correct ? "✅" : "❌"} ${el.explain}`;
+      li.style.color = selected === el.correct ? "green" : "red";
+      li.style.marginBottom = "4px";
+      ul.appendChild(li);
     }
-  };
+  });
+
+  quizFeedback.innerHTML = "";
+  quizFeedback.appendChild(ul);
+
+  if (allCorrect) {
+    correctSound.play();
+    xp += 10;
+    markLessonCompleted(currentModule.id, currentModule.lessons[currentLessonIndex].id);
+    updateProgressUI();
+    saveProgress();
+    nextLessonBtn.classList.remove("hidden");
+    submitQuizBtn.style.display = "none";
+    showMascotMessage("You have successfully completed this lesson!");
+  } else {
+    wrongSound.play();
+    showMascotMessage("One or more selections are incorrect. Read the explanation below.");
+  }
+};
 }
-
-
 
 
 
