@@ -11,26 +11,26 @@ const modulesData =
           title: "Headings",
           content: `
           <div class="lesson-layout">
-            <!-- Uitleg links -->
+            <!-- Explanation (left) -->
             <div class="lesson-explanation">
               <h2>HTML Headings</h2>
               <p>
-                Met HTML headings maak je titels en subtitels in een webpagina.
-                Er zijn 6 niveaus: <code>&lt;h1&gt;</code> tot <code>&lt;h6&gt;</code>.
+                With HTML headings you create titles and subtitles on a webpage.
+                There are 6 levels: <code>&lt;h1&gt;</code> through <code>&lt;h6&gt;</code>.
               </p>
-              <pre><code>&lt;h1&gt;Dit is een heading&lt;/h1&gt;</code></pre>
+              <pre><code>&lt;h1&gt;This is a heading&lt;/h1&gt;</code></pre>
             </div>
 
-            <!-- Editor in het midden -->
+            <!-- Editor in the middle -->
             <div class="lesson-editor">
               <textarea id="code-editor-html-headings">
-<h1>Mijn eerste heading</h1>
-<p>Dit is een paragraaf.</p>
+<h1>My first heading</h1>
+<p>This is a paragraph.</p>
               </textarea>
               <button onclick="runCode('html-headings')">▶ Run</button>
             </div>
 
-            <!-- Output rechts -->
+            <!-- Output (right) -->
             <div class="lesson-output">
               <iframe id="output-frame-html-headings"></iframe>
             </div>
@@ -41,21 +41,21 @@ const modulesData =
 
         {
           id: "html-tags",
-          title: "Belangrijke HTML-tags",
+          title: "Important HTML tags",
           content: `
-          <h2>Veelgebruikte HTML-tags</h2>
+          <h2>Common HTML tags</h2>
           <ul>
-            <li>&lt;h1&gt; t/m &lt;h6&gt;: Kopteksten</li>
-            <li>&lt;p&gt;: Paragraaf</li>
+            <li>&lt;h1&gt; to &lt;h6&gt;: Headings</li>
+            <li>&lt;p&gt;: Paragraph</li>
             <li>&lt;a href=\"url\"&gt;: Link</li>
-            <li>&lt;img src=\"afbeelding.jpg\" alt=\"beschrijving\"&gt;: Afbeelding</li>
-            <li>&lt;ul&gt; en &lt;ol&gt;: Lijsten</li>
-            <li>&lt;form&gt;: Formulier</li>
+            <li>&lt;img src=\"image.jpg\" alt=\"description\"&gt;: Image</li>
+            <li>&lt;ul&gt; and &lt;ol&gt;: Lists</li>
+            <li>&lt;form&gt;: Form</li>
           </ul>
         `,
           quiz: [
             {
-              question: "Welke tag is voor een hyperlink?",
+              question: "Which tag is for a hyperlink?",
               options: ["&lt;a&gt;", "&lt;img&gt;", "&lt;div&gt;"],
               correct: 0
             }
@@ -63,20 +63,20 @@ const modulesData =
         },
         {
           id: "html-attributes",
-          title: "HTML attributen",
+          title: "HTML attributes",
           content: `
-          <h2>Wat zijn attributen?</h2>
-          <p>Attributen geven extra informatie aan tags, zoals <code>href</code> bij links of <code>alt</code> bij afbeeldingen.</p>
-          <pre><code>&lt;a href="https://example.com"&gt;Bezoek site&lt;/a&gt;
-&lt;img src="foto.jpg" alt="Mijn foto"&gt;</code></pre>
+          <h2>What are attributes?</h2>
+          <p>Attributes provide extra information to tags, such as <code>href</code> on links or <code>alt</code> on images.</p>
+          <pre><code>&lt;a href="https://example.com"&gt;Visit site&lt;/a&gt;
+&lt;img src="photo.jpg" alt="My photo"&gt;</code></pre>
         `,
           quiz: [
             {
-              question: "Wat doet het 'alt' attribuut bij een afbeelding?",
+              question: "What does the 'alt' attribute do for an image?",
               options: [
-                "Geeft een alternatieve tekst voor schermlezers",
-                "Verandert de afbeelding",
-                "Voegt een link toe"
+                "Provides alternative text for screen readers",
+                "Changes the image",
+                "Adds a link"
               ],
               correct: 0
             }
@@ -84,15 +84,15 @@ const modulesData =
         },
         {
           id: "html-links",
-          title: "Links maken",
+          title: "Creating links",
           content: `
           <h2>Hyperlinks</h2>
-          <p>Met de <code>&lt;a&gt;</code> tag maak je links naar andere pagina's of websites.</p>
+          <p>Use the <code>&lt;a&gt;</code> tag to create links to other pages or websites.</p>
           <pre><code>&lt;a href="https://google.com"&gt;Google&lt;/a&gt;</code></pre>
         `,
           quiz: [
             {
-              question: "Hoe maak je een link naar https://google.com?",
+              question: "How do you make a link to https://google.com?",
               options: [
                 "&lt;a href='https://google.com'&gt;Link&lt;/a&gt;",
                 "&lt;link src='https://google.com'&gt;",
@@ -104,26 +104,26 @@ const modulesData =
         },
         {
           id: "html-images",
-          title: "Afbeeldingen toevoegen",
+          title: "Adding images",
           content: `
-          <h2>Afbeeldingen</h2>
-          <p>Met de <code>&lt;img&gt;</code> tag voeg je een afbeelding toe.</p>
-          <pre><code>&lt;img src="foto.jpg" alt="Beschrijving"&gt;</code></pre>
+          <h2>Images</h2>
+          <p>Use the <code>&lt;img&gt;</code> tag to add an image.</p>
+          <pre><code>&lt;img src="photo.jpg" alt="Description"&gt;</code></pre>
         `,
           quiz: [
             {
-              question: "Wat is verplicht bij een afbeelding voor toegankelijkheid?",
-              options: ["alt attribuut", "title attribuut", "href attribuut"],
+              question: "What is required for accessibility on an image?",
+              options: ["alt attribute", "title attribute", "href attribute"],
               correct: 0
             }
           ]
         },
         {
           id: "html-lijsten",
-          title: "Lijsten maken",
+          title: "Creating lists",
           content: `
-          <h2>Lijsten</h2>
-          <p>Er zijn ongeordende lijsten (<code>&lt;ul&gt;</code>) en geordende lijsten (<code>&lt;ol&gt;</code>).</p>
+          <h2>Lists</h2>
+          <p>There are unordered lists (<code>&lt;ul&gt;</code>) and ordered lists (<code>&lt;ol&gt;</code>).</p>
           <pre><code>&lt;ul&gt;
   &lt;li&gt;Item 1&lt;/li&gt;
   &lt;li&gt;Item 2&lt;/li&gt;
@@ -131,7 +131,7 @@ const modulesData =
         `,
           quiz: [
             {
-              question: "Welke tag gebruik je voor een lijstitem?",
+              question: "Which tag do you use for a list item?",
               options: ["&lt;li&gt;", "&lt;ul&gt;", "&lt;ol&gt;"],
               correct: 0
             }
@@ -139,24 +139,24 @@ const modulesData =
         },
         {
           id: "html-tables",
-          title: "Tabellen maken",
+          title: "Creating tables",
           content: `
-          <h2>Tabellen</h2>
-          <p>Gebruik <code>&lt;table&gt;</code> met rijen (<code>&lt;tr&gt;</code>) en cellen (<code>&lt;td&gt;</code> en <code>&lt;th&gt;</code>).</p>
+          <h2>Tables</h2>
+          <p>Use <code>&lt;table&gt;</code> with rows (<code>&lt;tr&gt;</code>) and cells (<code>&lt;td&gt;</code> and <code>&lt;th&gt;</code>).</p>
           <pre><code>&lt;table&gt;
   &lt;tr&gt;
-    &lt;th&gt;Naam&lt;/th&gt;
-    &lt;th&gt;Leeftijd&lt;/th&gt;
+    &lt;th&gt;Name&lt;/th&gt;
+    &lt;th&gt;Age&lt;/th&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-    &lt;td&gt;Jan&lt;/td&gt;
+    &lt;td&gt;John&lt;/td&gt;
     &lt;td&gt;25&lt;/td&gt;
   &lt;/tr&gt;
 &lt;/table&gt;</code></pre>
         `,
           quiz: [
             {
-              question: "Welke tag gebruik je voor een kopcel in een tabel?",
+              question: "Which tag do you use for a header cell in a table?",
               options: ["&lt;th&gt;", "&lt;td&gt;", "&lt;tr&gt;"],
               correct: 0
             }
@@ -164,19 +164,19 @@ const modulesData =
         },
         {
           id: "html-forms",
-          title: "Formulieren",
+          title: "Forms",
           content: `
-          <h2>Formulieren</h2>
-          <p>Met formulieren kan de gebruiker data invoeren.</p>
+          <h2>Forms</h2>
+          <p>Forms let the user input data.</p>
           <pre><code>&lt;form action='/submit' method='post'&gt;
-  &lt;label&gt;Naam:&lt;/label&gt;
-  &lt;input type='text' name='naam'&gt;
-  &lt;input type='submit' value='Verstuur'&gt;
+  &lt;label&gt;Name:&lt;/label&gt;
+  &lt;input type='text' name='name'&gt;
+  &lt;input type='submit' value='Send'&gt;
 &lt;/form&gt;</code></pre>
         `,
           quiz: [
             {
-              question: "Welke tag gebruik je voor invoervelden?",
+              question: "Which tag do you use for input fields?",
               options: ["&lt;input&gt;", "&lt;form&gt;", "&lt;button&gt;"],
               correct: 0
             }
@@ -184,14 +184,14 @@ const modulesData =
         },
         {
           id: "html-semantic",
-          title: "Semantische tags",
+          title: "Semantic tags",
           content: `
-          <h2>Semantische HTML</h2>
-          <p>Gebruik tags die de betekenis van content aangeven, zoals <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code> en <code>&lt;footer&gt;</code>.</p>
+          <h2>Semantic HTML</h2>
+          <p>Use tags that describe the meaning of content, like <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>, and <code>&lt;footer&gt;</code>.</p>
         `,
           quiz: [
             {
-              question: "Welke tag gebruik je voor de navigatie?",
+              question: "Which tag do you use for navigation?",
               options: ["&lt;nav&gt;", "&lt;div&gt;", "&lt;header&gt;"],
               correct: 0
             }
@@ -199,17 +199,17 @@ const modulesData =
         },
         {
           id: "html-media",
-          title: "Media toevoegen",
+          title: "Adding media",
           content: `
-          <h2>Audio en Video</h2>
-          <p>HTML ondersteunt audio en video met respectievelijk de <code>&lt;audio&gt;</code> en <code>&lt;video&gt;</code> tags.</p>
+          <h2>Audio and Video</h2>
+          <p>HTML supports audio and video with the <code>&lt;audio&gt;</code> and <code>&lt;video&gt;</code> tags respectively.</p>
           <pre><code>&lt;video controls&gt;
   &lt;source src="video.mp4" type="video/mp4"&gt;
 &lt;/video&gt;</code></pre>
         `,
           quiz: [
             {
-              question: "Welke tag gebruik je om video toe te voegen?",
+              question: "Which tag do you use to add video?",
               options: ["&lt;video&gt;", "&lt;img&gt;", "&lt;media&gt;"],
               correct: 0
             }
@@ -217,19 +217,19 @@ const modulesData =
         },
         {
           id: "html-accessibility",
-          title: "Toegankelijkheid",
+          title: "Accessibility",
           content: `
-          <h2>Toegankelijkheid</h2>
-          <p>Gebruik alt-teksten, labels, en ARIA-attributes om websites toegankelijk te maken voor iedereen.</p>
-          <pre><code>&lt;img src='foto.jpg' alt='Beschrijving van de afbeelding'&gt;</code></pre>
+          <h2>Accessibility</h2>
+          <p>Use alt texts, labels, and ARIA attributes to make websites accessible to everyone.</p>
+          <pre><code>&lt;img src='photo.jpg' alt='Description of the image'&gt;</code></pre>
         `,
           quiz: [
             {
-              question: "Waarom gebruik je alt-teksten?",
+              question: "Why do you use alt texts?",
               options: [
-                "Voor schermlezers en zoekmachines",
-                "Voor styling",
-                "Voor animaties"
+                "For screen readers and search engines",
+                "For styling",
+                "For animations"
               ],
               correct: 0
             }
@@ -245,10 +245,10 @@ const modulesData =
       lessons: [
         {
           id: "css-intro",
-          title: "Introductie tot CSS",
+          title: "Introduction to CSS",
           content: `
-          <h2>Wat is CSS?</h2>
-          <p>CSS bepaalt de visuele stijl van je website: kleuren, lettertypes, afstanden, en layout.</p>
+          <h2>What is CSS?</h2>
+          <p>CSS defines the visual style of your website: colors, fonts, spacing, and layout.</p>
           <pre><code>body {
   background-color: #f0f0f0;
   color: navy;
@@ -257,11 +257,11 @@ const modulesData =
         `,
           quiz: [
             {
-              question: "Waarvoor gebruik je CSS?",
+              question: "What do you use CSS for?",
               options: [
-                "Structuur van pagina bepalen",
-                "Opmaak en stijl van pagina bepalen",
-                "Pagina interactief maken"
+                "Determine the structure of the page",
+                "Define the look and style of the page",
+                "Make the page interactive"
               ],
               correct: 1
             }
@@ -272,7 +272,7 @@ const modulesData =
           title: "CSS Selectors",
           content: `
           <h2>CSS Selectors</h2>
-          <p>Met selectors kies je welke HTML-elementen je wilt stijlen: tags, classes en id's.</p>
+          <p>With selectors you choose which HTML elements to style: tags, classes and ids.</p>
           <ul>
             <li>Element selector: <code>p {}</code></li>
             <li>Class selector: <code>.menu {}</code></li>
@@ -281,7 +281,7 @@ const modulesData =
         `,
           quiz: [
             {
-              question: "Hoe selecteer je elementen met class 'menu'?",
+              question: "How do you select elements with class 'menu'?",
               options: [".menu", "#menu", "menu"],
               correct: 0
             }
@@ -289,15 +289,15 @@ const modulesData =
         },
         {
           id: "css-boxmodel",
-          title: "Het CSS Box Model",
+          title: "The CSS Box Model",
           content: `
-          <h2>Het CSS Box Model</h2>
-          <p>Elke HTML-box heeft:</p>
+          <h2>The CSS Box Model</h2>
+          <p>Every HTML box has:</p>
           <ul>
-            <li><strong>Content</strong>: de inhoud</li>
-            <li><strong>Padding</strong>: ruimte binnen de rand</li>
-            <li><strong>Border</strong>: de rand zelf</li>
-            <li><strong>Margin</strong>: ruimte buiten de rand</li>
+            <li><strong>Content</strong>: the content</li>
+            <li><strong>Padding</strong>: space inside the border</li>
+            <li><strong>Border</strong>: the border itself</li>
+            <li><strong>Margin</strong>: space outside the border</li>
           </ul>
           <pre><code>div {
   margin: 10px;
@@ -307,7 +307,7 @@ const modulesData =
         `,
           quiz: [
             {
-              question: "Welke laag zit tussen content en border?",
+              question: "Which layer is between content and border?",
               options: ["Padding", "Margin", "Outline"],
               correct: 0
             }
@@ -315,10 +315,10 @@ const modulesData =
         },
         {
           id: "css-colors",
-          title: "Kleuren in CSS",
+          title: "Colors in CSS",
           content: `
-          <h2>Kleuren</h2>
-          <p>Je kunt kleuren instellen met namen, hexcodes, rgb en rgba.</p>
+          <h2>Colors</h2>
+          <p>You can set colors using names, hex codes, rgb and rgba.</p>
           <pre><code>color: red;
 background-color: #00ff00;
 border-color: rgb(0,0,255);
@@ -326,7 +326,7 @@ opacity: 0.5;</code></pre>
         `,
           quiz: [
             {
-              question: "Hoe geef je de kleur blauw in hexcode?",
+              question: "How do you represent blue in hex?",
               options: ["#0000ff", "#ff0000", "#00ff00"],
               correct: 0
             }
@@ -334,10 +334,10 @@ opacity: 0.5;</code></pre>
         },
         {
           id: "css-fonts",
-          title: "Lettertypes en tekst",
+          title: "Fonts and text",
           content: `
-          <h2>Lettertypes en tekst</h2>
-          <p>Pas lettertypes, grootte, kleur en uitlijning aan.</p>
+          <h2>Fonts and text</h2>
+          <p>Adjust fonts, size, color and alignment.</p>
           <pre><code>font-family: Arial, sans-serif;
 font-size: 16px;
 color: navy;
@@ -345,7 +345,7 @@ text-align: center;</code></pre>
         `,
           quiz: [
             {
-              question: "Welke CSS-eigenschap verandert het lettertype?",
+              question: "Which CSS property changes the font family?",
               options: ["font-family", "font-style", "font-weight"],
               correct: 0
             }
@@ -353,11 +353,11 @@ text-align: center;</code></pre>
         },
         {
           id: "css-layout",
-          title: "Layouts: display en position",
+          title: "Layouts: display and position",
           content: `
           <h2>Layouts</h2>
-          <p>Met <code>display</code> bepaal je of een element inline of block is.</p>
-          <p><code>position</code> bepaalt hoe een element gepositioneerd wordt.</p>
+          <p>With <code>display</code> you decide if an element is inline or block.</p>
+          <p><code>position</code> determines how an element is positioned.</p>
           <pre><code>div {
   display: block;
   position: relative;
@@ -367,11 +367,11 @@ text-align: center;</code></pre>
         `,
           quiz: [
             {
-              question: "Wat doet 'display: block;'?",
+              question: "What does 'display: block;' do?",
               options: [
-                "Element neemt hele regel in",
-                "Element neemt alleen ruimte van inhoud",
-                "Element wordt verborgen"
+                "Element takes the whole line",
+                "Element only takes space for its content",
+                "Element is hidden"
               ],
               correct: 0
             }
@@ -382,7 +382,7 @@ text-align: center;</code></pre>
           title: "Flexbox",
           content: `
           <h2>Flexbox</h2>
-          <p>Flexbox is een krachtige manier om layouts te maken die flexibel en responsief zijn.</p>
+          <p>Flexbox is a powerful way to make layouts that are flexible and responsive.</p>
           <pre><code>container {
   display: flex;
   justify-content: center;
@@ -391,11 +391,11 @@ text-align: center;</code></pre>
         `,
           quiz: [
             {
-              question: "Wat doet 'justify-content: center;'?",
+              question: "What does 'justify-content: center;' do?",
               options: [
-                "Centraal uitlijnen van flex-items horizontaal",
-                "Centraal uitlijnen van tekst",
-                "Element verbergen"
+                "Center flex-items horizontally",
+                "Center text",
+                "Hide the element"
               ],
               correct: 0
             }
@@ -406,7 +406,7 @@ text-align: center;</code></pre>
           title: "CSS Grid",
           content: `
           <h2>CSS Grid</h2>
-          <p>Grid is een layoutsysteem met rijen en kolommen voor complexe designs.</p>
+          <p>Grid is a layout system with rows and columns for complex designs.</p>
           <pre><code>container {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
@@ -415,11 +415,11 @@ text-align: center;</code></pre>
         `,
           quiz: [
             {
-              question: "Wat doet 'grid-template-columns: 1fr 2fr 1fr;'?",
+              question: "What does 'grid-template-columns: 1fr 2fr 1fr;' do?",
               options: [
-                "Maakt 3 kolommen met breedtes in verhouding 1:2:1",
-                "Verandert de rijhoogte",
-                "Verbergt een kolom"
+                "Creates 3 columns with widths in ratio 1:2:1",
+                "Changes the row height",
+                "Hides a column"
               ],
               correct: 0
             }
@@ -430,7 +430,7 @@ text-align: center;</code></pre>
           title: "Media Queries",
           content: `
           <h2>Media Queries</h2>
-          <p>Met media queries pas je je design aan voor verschillende schermgroottes (responsief design).</p>
+          <p>With media queries you adapt your design for different screen sizes (responsive design).</p>
           <pre><code>@media (max-width: 600px) {
   body {
     background-color: lightgray;
@@ -439,11 +439,11 @@ text-align: center;</code></pre>
         `,
           quiz: [
             {
-              question: "Wat doet een media query?",
+              question: "What does a media query do?",
               options: [
-                "Past stijl aan afhankelijk van schermgrootte",
-                "Voegt animaties toe",
-                "Verandert HTML structuur"
+                "Adjusts styles based on screen size",
+                "Adds animations",
+                "Changes HTML structure"
               ],
               correct: 0
             }
@@ -451,10 +451,10 @@ text-align: center;</code></pre>
         },
         {
           id: "css-animations",
-          title: "Animaties en Transities",
+          title: "Animations and Transitions",
           content: `
-          <h2>Animaties</h2>
-          <p>Met <code>transition</code> en <code>@keyframes</code> maak je animaties.</p>
+          <h2>Animations</h2>
+          <p>With <code>transition</code> and <code>@keyframes</code> you create animations.</p>
           <pre><code>div {
   transition: background-color 0.5s ease;
 }
@@ -464,11 +464,11 @@ div:hover {
         `,
           quiz: [
             {
-              question: "Wat doet 'transition: background-color 0.5s;'?",
+              question: "What does 'transition: background-color 0.5s;' do?",
               options: [
-                "Laat kleur langzaam veranderen",
-                "Verandert kleur direct",
-                "Verbergt het element"
+                "Makes the color change slowly",
+                "Changes the color immediately",
+                "Hides the element"
               ],
               correct: 0
             }
@@ -484,19 +484,19 @@ div:hover {
       lessons: [
         {
           id: "js-intro",
-          title: "Wat is JavaScript?",
+          title: "What is JavaScript?",
           content: `
-          <h2>Wat is JavaScript?</h2>
-          <p>JavaScript maakt websites interactief. Je kunt knoppen laten werken, teksten aanpassen, animaties maken, en meer.</p>
-          <pre><code>alert("Hallo wereld!");</code></pre>
+          <h2>What is JavaScript?</h2>
+          <p>JavaScript makes websites interactive. You can make buttons work, change text, create animations, and more.</p>
+          <pre><code>alert("Hello world!");</code></pre>
         `,
           quiz: [
             {
-              question: "Wat doet JavaScript?",
+              question: "What does JavaScript do?",
               options: [
-                "Bepaalt structuur van pagina",
-                "Voegt stijl toe",
-                "Maakt pagina interactief"
+                "Defines the structure of the page",
+                "Adds styling",
+                "Makes the page interactive"
               ],
               correct: 2
             }
@@ -504,16 +504,16 @@ div:hover {
         },
         {
           id: "js-variables",
-          title: "Variabelen",
+          title: "Variables",
           content: `
-          <h2>Variabelen</h2>
-          <p>Variabelen zijn plekken om data op te slaan.</p>
-          <pre><code>let naam = "Jan";
-const leeftijd = 25;</code></pre>
+          <h2>Variables</h2>
+          <p>Variables are places to store data.</p>
+          <pre><code>let name = "John";
+const age = 25;</code></pre>
         `,
           quiz: [
             {
-              question: "Hoe declareer je een variabele die je later kunt veranderen?",
+              question: "How do you declare a variable you can change later?",
               options: ["let", "const", "var"],
               correct: 0
             }
@@ -524,74 +524,74 @@ const leeftijd = 25;</code></pre>
           title: "Operators",
           content: `
           <h2>Operators</h2>
-          <p>Met operators kun je rekenen en vergelijken.</p>
+          <p>With operators you can calculate and compare.</p>
           <pre><code>let x = 10 + 5;
-let groter = x > 10;</code></pre>
+let bigger = x > 10;</code></pre>
         `,
           quiz: [
             {
-              question: "Wat is het resultaat van 5 + 3?",
-              options: ["8", "53", "fout"],
+              question: "What is the result of 5 + 3?",
+              options: ["8", "53", "error"],
               correct: 0
             }
           ]
         },
         {
           id: "js-conditionals",
-          title: "Voorwaardelijke logica",
+          title: "Conditional logic",
           content: `
-          <h2>If en else</h2>
-          <p>Je kunt code laten uitvoeren als aan een voorwaarde voldaan wordt.</p>
-          <pre><code>if (leeftijd >= 18) {
-  console.log("Volwassen");
+          <h2>If and else</h2>
+          <p>You can run code if a condition is met.</p>
+          <pre><code>if (age >= 18) {
+  console.log("Adult");
 } else {
-  console.log("Minderjarig");
+  console.log("Underage");
 }</code></pre>
         `,
           quiz: [
             {
-              question: "Wat wordt getoond als leeftijd 16 is?",
-              options: ["Minderjarig", "Volwassen", "Niets"],
+              question: "What is shown if age is 16?",
+              options: ["Underage", "Adult", "Nothing"],
               correct: 0
             }
           ]
         },
         {
           id: "js-loops",
-          title: "Lussen",
+          title: "Loops",
           content: `
-          <h2>Lussen</h2>
-          <p>Met lussen herhaal je code.</p>
+          <h2>Loops</h2>
+          <p>With loops you repeat code.</p>
           <pre><code>for(let i = 0; i < 5; i++) {
   console.log(i);
 }</code></pre>
         `,
           quiz: [
             {
-              question: "Hoe vaak wordt console.log aangeroepen?",
-              options: ["5 keer", "1 keer", "10 keer"],
+              question: "How many times is console.log called?",
+              options: ["5 times", "1 time", "10 times"],
               correct: 0
             }
           ]
         },
         {
           id: "js-functions",
-          title: "Functies",
+          title: "Functions",
           content: `
-          <h2>Functies</h2>
-          <p>Functies zijn herbruikbare blokken code.</p>
-          <pre><code>function groet(naam) {
-  console.log("Hallo " + naam);
+          <h2>Functions</h2>
+          <p>Functions are reusable blocks of code.</p>
+          <pre><code>function greet(name) {
+  console.log("Hello " + name);
 }
-groet("Jan");</code></pre>
+greet("John");</code></pre>
         `,
           quiz: [
             {
-              question: "Wat doet groet('Jan')?",
+              question: "What does greet('John') do?",
               options: [
-                "Toont 'Hallo Jan'",
-                "Maakt een nieuwe variabele",
-                "Geeft een foutmelding"
+                "Shows 'Hello John'",
+                "Creates a new variable",
+                "Gives an error"
               ],
               correct: 0
             }
@@ -602,53 +602,53 @@ groet("Jan");</code></pre>
           title: "Arrays",
           content: `
           <h2>Arrays</h2>
-          <p>Arrays zijn lijsten met data.</p>
-          <pre><code>let kleuren = ["rood", "groen", "blauw"];
-console.log(kleuren[1]); // 'groen'</code></pre>
+          <p>Arrays are lists of data.</p>
+          <pre><code>let colors = ["red", "green", "blue"];
+console.log(colors[1]); // 'green'</code></pre>
         `,
           quiz: [
             {
-              question: "Wat geeft kleuren[2] terug?",
-              options: ["blauw", "groen", "rood"],
+              question: "What does colors[2] return?",
+              options: ["blue", "green", "red"],
               correct: 0
             }
           ]
         },
         {
           id: "js-objects",
-          title: "Objecten",
+          title: "Objects",
           content: `
-          <h2>Objecten</h2>
-          <p>Objecten bevatten eigenschappen.</p>
-          <pre><code>let persoon = {
-  naam: "Jan",
-  leeftijd: 25
+          <h2>Objects</h2>
+          <p>Objects contain properties.</p>
+          <pre><code>let person = {
+  name: "John",
+  age: 25
 };
-console.log(persoon.naam); // Jan</code></pre>
+console.log(person.name); // John</code></pre>
         `,
           quiz: [
             {
-              question: "Hoe haal je de naam op uit 'persoon'?",
-              options: ["persoon.naam", "persoon['naam']", "Beide"],
+              question: "How do you get the name from 'person'?",
+              options: ["person.name", "person['name']", "Both"],
               correct: 2
             }
           ]
         },
         {
           id: "js-dom",
-          title: "DOM-manipulatie",
+          title: "DOM manipulation",
           content: `
-          <h2>DOM-manipulatie</h2>
-          <p>Met JavaScript kun je elementen in de pagina aanpassen.</p>
-          <pre><code>document.getElementById("titel").textContent = "Nieuwe tekst";</code></pre>
+          <h2>DOM manipulation</h2>
+          <p>With JavaScript you can change elements on the page.</p>
+          <pre><code>document.getElementById("title").textContent = "New text";</code></pre>
         `,
           quiz: [
             {
-              question: "Wat doet getElementById?",
+              question: "What does getElementById do?",
               options: [
-                "Zoekt element met gegeven id",
-                "Verandert alle tekst",
-                "Maakt een nieuw element"
+                "Finds the element with the given id",
+                "Changes all text",
+                "Creates a new element"
               ],
               correct: 0
             }
@@ -659,40 +659,40 @@ console.log(persoon.naam); // Jan</code></pre>
           title: "Events",
           content: `
           <h2>Events</h2>
-          <p>Events reageren op acties zoals klikken.</p>
-          <pre><code>document.getElementById("knop").addEventListener("click", function() {
-  alert("Geklikt!");
+          <p>Events react to actions like clicks.</p>
+          <pre><code>document.getElementById("button").addEventListener("click", function() {
+  alert("Clicked!");
 });</code></pre>
         `,
           quiz: [
             {
-              question: "Wat gebeurt er bij klikken op de knop?",
-              options: ["Toont alert", "Niets", "Foutmelding"],
+              question: "What happens when clicking the button?",
+              options: ["Shows an alert", "Nothing", "Error"],
               correct: 0
             }
           ]
         },
         {
           id: "js-classes",
-          title: "Classes en OOP",
+          title: "Classes and OOP",
           content: `
           <h2>Classes</h2>
-          <p>Classes zijn blauwdrukken voor objecten.</p>
-          <pre><code>class Persoon {
-  constructor(naam) {
-    this.naam = naam;
+          <p>Classes are blueprints for objects.</p>
+          <pre><code>class Person {
+  constructor(name) {
+    this.name = name;
   }
-  groet() {
-    console.log("Hallo " + this.naam);
+  greet() {
+    console.log("Hello " + this.name);
   }
 }
-let p = new Persoon("Jan");
-p.groet();</code></pre>
+let p = new Person("John");
+p.greet();</code></pre>
         `,
           quiz: [
             {
-              question: "Wat doet p.groet()?",
-              options: ["Toont 'Hallo Jan'", "Maakt nieuw object", "Geeft fout"],
+              question: "What does p.greet() do?",
+              options: ["Shows 'Hello John'", "Creates a new object", "Gives an error"],
               correct: 0
             }
           ]
@@ -707,19 +707,19 @@ p.groet();</code></pre>
       lessons: [
         {
           id: "python-intro",
-          title: "Wat is Python?",
+          title: "What is Python?",
           content: `
-          <h2>Wat is Python?</h2>
-          <p>Python is een makkelijk te leren programmeertaal, gebruikt voor web, data en automatisering.</p>
-          <pre><code>print("Hallo wereld!")</code></pre>
+          <h2>What is Python?</h2>
+          <p>Python is an easy-to-learn programming language used for web, data and automation.</p>
+          <pre><code>print("Hello world!")</code></pre>
         `,
           quiz: [
             {
-              question: "Wat doet print()?",
+              question: "What does print() do?",
               options: [
-                "Toont tekst op scherm",
-                "Start programma",
-                "Slaat data op"
+                "Shows text on screen",
+                "Starts a program",
+                "Saves data"
               ],
               correct: 0
             }
@@ -727,56 +727,56 @@ p.groet();</code></pre>
         },
         {
           id: "python-variables",
-          title: "Variabelen",
+          title: "Variables",
           content: `
-          <h2>Variabelen</h2>
-          <p>Sla data op zonder type aan te geven.</p>
-          <pre><code>naam = "Jan"
-leeftijd = 25</code></pre>
+          <h2>Variables</h2>
+          <p>Store data without declaring the type.</p>
+          <pre><code>name = "John"
+age = 25</code></pre>
         `,
           quiz: [
             {
-              question: "Hoe declareer je een variabele in Python?",
-              options: ["naam = 'Jan'", "let naam = 'Jan'", "var naam = 'Jan'"],
+              question: "How do you declare a variable in Python?",
+              options: ["name = 'John'", "let name = 'John'", "var name = 'John'"],
               correct: 0
             }
           ]
         },
         {
           id: "python-types",
-          title: "Datatypes",
+          title: "Data types",
           content: `
-          <h2>Datatypes</h2>
-          <p>Voorbeelden: string, int, float, bool.</p>
-          <pre><code>naam = "Jan"
-leeftijd = 25
+          <h2>Data types</h2>
+          <p>Examples: string, int, float, bool.</p>
+          <pre><code>name = "John"
+age = 25
 is_student = True
-prijs = 19.99</code></pre>
+price = 19.99</code></pre>
         `,
           quiz: [
             {
-              question: "Wat is een boolean waarde?",
-              options: ["True of False", "1 of 0", "Tekst"],
+              question: "What is a boolean value?",
+              options: ["True or False", "1 or 0", "Text"],
               correct: 0
             }
           ]
         },
         {
           id: "python-input",
-          title: "Input en output",
+          title: "Input and output",
           content: `
-          <h2>Input en output</h2>
-          <p>Met input() vraag je data, met print() toon je data.</p>
-          <pre><code>naam = input("Wat is je naam? ")
-print("Hallo " + naam)</code></pre>
+          <h2>Input and output</h2>
+          <p>Use input() to ask for data, use print() to show data.</p>
+          <pre><code>name = input("What is your name? ")
+print("Hello " + name)</code></pre>
         `,
           quiz: [
             {
-              question: "Wat doet input()?",
+              question: "What does input() do?",
               options: [
-                "Vraagt gebruiker om tekst",
-                "Toont tekst",
-                "Start programma"
+                "Asks the user for text",
+                "Shows text",
+                "Starts a program"
               ],
               correct: 0
             }
@@ -784,55 +784,55 @@ print("Hallo " + naam)</code></pre>
         },
         {
           id: "python-conditionals",
-          title: "Voorwaardelijke statements",
+          title: "Conditional statements",
           content: `
-          <h2>Als en anders</h2>
-          <pre><code>if leeftijd >= 18:
-    print("Volwassen")
+          <h2>If and else</h2>
+          <pre><code>if age >= 18:
+    print("Adult")
 else:
-    print("Minderjarig")</code></pre>
+    print("Underage")</code></pre>
         `,
           quiz: [
             {
-              question: "Wat wordt getoond als leeftijd 16 is?",
-              options: ["Minderjarig", "Volwassen", "Niets"],
+              question: "What is shown if age is 16?",
+              options: ["Underage", "Adult", "Nothing"],
               correct: 0
             }
           ]
         },
         {
           id: "python-loops",
-          title: "Lussen",
+          title: "Loops",
           content: `
-          <h2>Lussen</h2>
+          <h2>Loops</h2>
           <pre><code>for i in range(5):
     print(i)</code></pre>
         `,
           quiz: [
             {
-              question: "Hoe vaak wordt print(i) uitgevoerd?",
-              options: ["5 keer", "1 keer", "10 keer"],
+              question: "How many times is print(i) executed?",
+              options: ["5 times", "1 time", "10 times"],
               correct: 0
             }
           ]
         },
         {
           id: "python-functions",
-          title: "Functies",
+          title: "Functions",
           content: `
-          <h2>Functies</h2>
-          <pre><code>def groet(naam):
-    print("Hallo " + naam)
+          <h2>Functions</h2>
+          <pre><code>def greet(name):
+    print("Hello " + name)
 
-groet("Jan")</code></pre>
+greet("John")</code></pre>
         `,
           quiz: [
             {
-              question: "Wat doet groet('Jan')?",
+              question: "What does greet('John') do?",
               options: [
-                "Toont 'Hallo Jan'",
-                "Maakt variabele",
-                "Geeft foutmelding"
+                "Shows 'Hello John'",
+                "Creates a variable",
+                "Gives an error"
               ],
               correct: 0
             }
@@ -840,35 +840,35 @@ groet("Jan")</code></pre>
         },
         {
           id: "python-lists",
-          title: "Lijsten",
+          title: "Lists",
           content: `
-          <h2>Lijsten</h2>
-          <pre><code>kleuren = ["rood", "groen", "blauw"]
-print(kleuren[1]) # groen</code></pre>
+          <h2>Lists</h2>
+          <pre><code>colors = ["red", "green", "blue"]
+print(colors[1]) # green</code></pre>
         `,
           quiz: [
             {
-              question: "Wat geeft kleuren[2] terug?",
-              options: ["blauw", "groen", "rood"],
+              question: "What does colors[2] return?",
+              options: ["blue", "green", "red"],
               correct: 0
             }
           ]
         },
         {
           id: "python-dictionaries",
-          title: "Woordenboeken (Dictionaries)",
+          title: "Dictionaries",
           content: `
           <h2>Dictionaries</h2>
-          <pre><code>persoon = {"naam": "Jan", "leeftijd": 25}
-print(persoon["naam"]) # Jan</code></pre>
+          <pre><code>person = {"name": "John", "age": 25}
+print(person["name"]) # John</code></pre>
         `,
           quiz: [
             {
-              question: "Hoe haal je 'naam' op uit een dictionary?",
+              question: "How do you get 'name' from a dictionary?",
               options: [
-                "persoon['naam']",
-                "persoon.naam",
-                "persoon(nam)"
+                "person['name']",
+                "person.name",
+                "person(nam)"
               ],
               correct: 0
             }
@@ -876,42 +876,42 @@ print(persoon["naam"]) # Jan</code></pre>
         },
         {
           id: "python-classes",
-          title: "Klassen",
+          title: "Classes",
           content: `
-          <h2>Klassen en Objecten</h2>
-          <pre><code>class Persoon:
-    def __init__(self, naam):
-        self.naam = naam
+          <h2>Classes and Objects</h2>
+          <pre><code>class Person:
+    def __init__(self, name):
+        self.name = name
 
-    def groet(self):
-        print("Hallo " + self.naam)
+    def greet(self):
+        print("Hello " + self.name)
 
-p = Persoon("Jan")
-p.groet()</code></pre>
+p = Person("John")
+p.greet()</code></pre>
         `,
           quiz: [
             {
-              question: "Wat doet p.groet()?",
-              options: ["Toont 'Hallo Jan'", "Maakt nieuw object", "Geeft fout"],
+              question: "What does p.greet() do?",
+              options: ["Shows 'Hello John'", "Creates a new object", "Gives an error"],
               correct: 0
             }
           ]
         },
         {
           id: "python-files",
-          title: "Bestanden lezen en schrijven",
+          title: "Reading and writing files",
           content: `
-          <h2>Bestandsbewerking</h2>
-          <pre><code>with open("bestand.txt", "w") as f:
-    f.write("Hallo wereld!")</code></pre>
+          <h2>File operations</h2>
+          <pre><code>with open("file.txt", "w") as f:
+    f.write("Hello world!")</code></pre>
         `,
           quiz: [
             {
-              question: "Wat doet open('bestand.txt', 'w')?",
+              question: "What does open('file.txt', 'w') do?",
               options: [
-                "Opent bestand om te schrijven",
-                "Leest bestand",
-                "Verwijdert bestand"
+                "Opens the file for writing",
+                "Reads the file",
+                "Deletes the file"
               ],
               correct: 0
             }
@@ -920,177 +920,83 @@ p.groet()</code></pre>
       ]
     },
 
-    // ================= Cybersecurity =================
+// ================= Cybersecurity =================
+{
+  id: "cybersecurity",
+  title: "Cybersecurity",
+  lessons: [
     {
-      id: "cybersecurity",
-      title: "Cybersecurity",
-      lessons: [
-        {
-          id: "phishing-mail-1",
-          title: "Exercise: recognize the phishing email",
-          content: `
+      id: "phishing-mail-1",
+      title: "Exercise: recognize the phishing email",
+      content: `
         <p>Please review the email below carefully. Click on any suspicious elements.</p>
         <div id="mail-exercise-root" class="mail-view"></div>
       `,
-          quiz: [
-            {
-              type: "mail",
-              mailHtml: `
+      quiz: [
+        {
+          type: "mail",
+          mailHtml: `
             <div class="mail-view">
               <div class="mail-toolbar"></div>
+
               <div class="mail-headers">
                 <div>
                   <strong>From:</strong>
-                  <span data-id="from1" class="mail-element">support@apple-free-gift.ru</span>
+                  <span data-id="from" class="mail-element">support@apple-free-gift.ru</span>
                 </div>
                 <div>
                   <strong>To:</strong>
-                  <span data-id="to1" class="mail-element">My@example.com</span>
+                  <span data-id="to" class="mail-element">My@example.com</span>
                 </div>
                 <div class="mail-subject">
-                  <span data-id="sub1" class="mail-element">Your</span>
-                  <span data-id="sub2" class="mail-element">Apple</span>
-                  <span data-id="sub3" class="mail-element">account</span>
-                  <span data-id="sub4" class="mail-element">will</span>
-                  <span data-id="sub5" class="mail-element">be</span>
-                  <span data-id="sub6" class="mail-element">closed!</span>
+                  <span data-id="subject" class="mail-element">Your Apple account will be closed!</span>
                 </div>
               </div>
+
               <div class="mail-body">
                 <p>
-                  <span data-id="p1" class="mail-element">Dear</span>
-                  <span data-id="p2" class="mail-element">user,</span>
+                  <span data-id="dear_user" class="mail-element">Dear user,</span>
                 </p>
+
                 <p>
-                  <span data-id="p3" class="mail-element">We</span>
-                  <span data-id="p4" class="mail-element">have</span>
-                  <span data-id="p5" class="mail-element">detected</span>
-                  <span data-id="p6" class="mail-element">suspicious</span>
-                  <span data-id="p7" class="mail-element">activity</span>
-                  <span data-id="p8" class="mail-element">on</span>
-                  <span data-id="p9" class="mail-element">your</span>
-                  <span data-id="p10" class="mail-element">account.</span>
-                  <span data-id="link" class="mail-element">If</span>
-                  <span data-id="link2" class="mail-element">you</span>
-                  <span data-id="link3" class="mail-element">do</span>
-                  <span data-id="link4" class="mail-element">not</span>
-                  <span data-id="link5" class="mail-element">respond</span>
-                  <span data-id="link6" class="mail-element">within</span>
-                  <span data-id="link7" class="mail-element">24</span>
-                  <span data-id="link8" class="mail-element">hours</span>
-                  <span data-id="link9" class="mail-element">by</span>
-                  <span data-id="link10" class="mail-element">clicking</span>
-                  <span data-id="link11" class="mail-element">on</span>
-                  <span data-id="link12" class="mail-element">the</span>
-                  <span data-id="link13" class="mail-element">link</span>
-                  <span data-id="link14" class="mail-element">below,</span>
-                  <span data-id="p11" class="mail-element">your</span>
-                  <span data-id="p12" class="mail-element">account</span>
-                  <span data-id="p13" class="mail-element">will</span>
-                  <span data-id="p14" class="mail-element">be</span>
-                  <span data-id="p15" class="mail-element">closed</span>
-                  <span data-id="p16" class="mail-element">immediately.</span>
+                  <span data-id="suspicious_activity" class="mail-element">
+                    We have detected suspicious activity on your account.
+                  </span>
                 </p>
+
                 <p>
-                  <span data-id="p17" class="mail-element">To</span>
-                  <span data-id="p18" class="mail-element">protect</span>
-                  <span data-id="p19" class="mail-element">your</span>
-                  <span data-id="p20" class="mail-element">account,</span>
-                  <span data-id="p21" class="mail-element">click</span>
-                  <span data-id="link1" class="mail-element">http://apple-secure-login-verify.com</span>
-                  <span data-id="p22" class="mail-element">and</span>
-                  <span data-id="p23" class="mail-element">enter</span>
-                  <span data-id="p24" class="mail-element">your</span>
-                  <span data-id="p25" class="mail-element">details.</span>
+                  <span data-id="deadline_warning" class="mail-element">
+                    If you do not respond within 24 hours by clicking on the link below, your account will be closed immediately.
+                  </span>
                 </p>
+
                 <p>
-                  <span data-id="p26" class="mail-element">Yours</span>
-                  <span data-id="p27" class="mail-element">sincerely,</span><br>
-                  <span data-id="sig" class="mail-element">Apple Support Team</span>
+                  <span data-id="protect_phrase" class="mail-element">To protect your account,</span>
+                  <span data-id="click_link" class="mail-element">
+                    click http://apple-secure-login-verify.com and enter your details.
+                  </span>
+                </p>
+
+                <p>
+                  <span data-id="signature" class="mail-element">Yours sincerely, Apple Support Team</span>
                 </p>
               </div>
             </div>
           `,
-              elements: [
-                { id: "p1", selector: '[data-id="p1"]', correct: false, explain: "Common greeting, not suspicious." },
-                { id: "p2", selector: '[data-id="p2"]', correct: false, explain: "Common greeting, not suspicious." },
-                { id: "p3", selector: '[data-id="p3"]', correct: false, explain: "Normal wording." },
-                { id: "p4", selector: '[data-id="p4"]', correct: false, explain: "Normal wording." },
-                { id: "p5", selector: '[data-id="p5"]', correct: false, explain: "Normal wording." },
-                { id: "p6", selector: '[data-id="p6"]', correct: false, explain: "Normal wording." },
-                { id: "p7", selector: '[data-id="p7"]', correct: false, explain: "Normal wording." },
-                { id: "p8", selector: '[data-id="p8"]', correct: false, explain: "Normal wording." },
-                { id: "p9", selector: '[data-id="p9"]', correct: false, explain: "Normal wording." },
-                { id: "p10", selector: '[data-id="p10"]', correct: false, explain: "Normal wording." },
-                { id: "p11", selector: '[data-id="p11"]', correct: false, explain: "Normal wording." },
-                { id: "p12", selector: '[data-id="p12"]', correct: false, explain: "Normal wording." },
-                { id: "p13", selector: '[data-id="p13"]', correct: false, explain: "Normal wording." },
-                { id: "p14", selector: '[data-id="p14"]', correct: false, explain: "Normal wording." },
-                { id: "p15", selector: '[data-id="p15"]', correct: false, explain: "Normal wording." },
-                { id: "p16", selector: '[data-id="p16"]', correct: false, explain: "Normal wording." },
-                { id: "p17", selector: '[data-id="p17"]', correct: false, explain: "Normal wording." },
-                { id: "p18", selector: '[data-id="p18"]', correct: false, explain: "Normal wording." },
-                { id: "p19", selector: '[data-id="p19"]', correct: false, explain: "Normal wording." },
-                { id: "p20", selector: '[data-id="p20"]', correct: false, explain: "Normal wording." },
-                { id: "p21", selector: '[data-id="p21"]', correct: false, explain: "Normal wording." },
-                { id: "p22", selector: '[data-id="p22"]', correct: false, explain: "Normal wording." },
-                { id: "p23", selector: '[data-id="p23"]', correct: false, explain: "Normal wording." },
-                { id: "p24", selector: '[data-id="p24"]', correct: false, explain: "Normal wording." },
-                { id: "p25", selector: '[data-id="p25"]', correct: false, explain: "Normal wording." },
-                { id: "p26", selector: '[data-id="p26"]', correct: false, explain: "Common closing, not suspicious." },
-                { id: "p27", selector: '[data-id="p27"]', correct: false, explain: "Common closing, not suspicious." },
-                { id: "link", selector: '[data-id="link"]', correct: true, explain: "Vague appeal to click with urgency — typical phishing tactic." },
-                { id: "link1", selector: '[data-id="link1"]', correct: true, explain: "The URL is not the official apple.com domain." },
-                { id: "sig", selector: '[data-id="sig"]', correct: false, explain: "Signature looks normal, but is not proof that everything is okay." },
-                { id: "from1", selector: '[data-id="from1"]', correct: true, explain: "Suspicious email domain (not apple.com)." },
-                { id: "to1", selector: '[data-id="to1"]', correct: false, explain: "Your own email address is safe." },
-                { id: "sub1", selector: '[data-id="sub1"]', correct: true, explain: "Alarmist subject line to create urgency." },
-                { id: "sub2", selector: '[data-id="sub2"]', correct: true, explain: "Alarmist subject line to create urgency." },
-                { id: "sub3", selector: '[data-id="sub3"]', correct: true, explain: "Alarmist subject line to create urgency." },
-                { id: "sub4", selector: '[data-id="sub4"]', correct: true, explain: "Alarmist subject line to create urgency." },
-                { id: "sub5", selector: '[data-id="sub5"]', correct: true, explain: "Alarmist subject line to create urgency." },
-                { id: "sub6", selector: '[data-id="sub6"]', correct: true, explain: "Alarmist subject line to create urgency." },
-                { id: "link2", selector: '[data-id="link2"]', correct: true, explain: "Vague appeal to click with urgency — typical phishing tactic." },
-                { id: "link3", selector: '[data-id="link3"]', correct: true, explain: "Vague appeal to click with urgency — typical phishing tactic." },
-                { id: "link4", selector: '[data-id="link4"]', correct: true, explain: "Vague appeal to click with urgency — typical phishing tactic." },
-                { id: "link5", selector: '[data-id="link5"]', correct: true, explain: "Vague appeal to click with urgency — typical phishing tactic." },
-                { id: "link6", selector: '[data-id="link6"]', correct: true, explain: "Vague appeal to click with urgency — typical phishing tactic." },
-                { id: "link7", selector: '[data-id="link7"]', correct: true, explain: "Vague appeal to click with urgency — typical phishing tactic." },
-                { id: "link8", selector: '[data-id="link8"]', correct: true, explain: "Vague appeal to click with urgency — typical phishing tactic." },
-                { id: "link9", selector: '[data-id="link9"]', correct: true, explain: "Vague appeal to click with urgency — typical phishing tactic." },
-                { id: "link10", selector: '[data-id="link10"]', correct: true, explain: "Vague appeal to click with urgency — typical phishing tactic." },
-                { id: "link11", selector: '[data-id="link11"]', correct: true, explain: "Vague appeal to click with urgency — typical phishing tactic." },
-                { id: "link12", selector: '[data-id="link12"]', correct: true, explain: "Vague appeal to click with urgency — typical phishing tactic." },
-                { id: "link13", selector: '[data-id="link13"]', correct: true, explain: "The URL is not the official apple.com domain." },
-                { id: "link14", selector: '[data-id="link14"]', correct: true, explain: "The URL is not the official apple.com domain." },
-
-              ]
-            }
+          elements: [
+            { id: "from", selector: '[data-id="from"]', correct: true, explain: "Suspicious email domain (not apple.com)." },
+            { id: "to", selector: '[data-id="to"]', correct: false, explain: "Your own email address is safe." },
+            { id: "subject", selector: '[data-id="subject"]', correct: true, explain: "Alarmist subject line to create urgency." },
+            { id: "dear_user", selector: '[data-id="dear_user"]', correct: false, explain: "Generic greeting — common in phishing but not always decisive." },
+            { id: "suspicious_activity", selector: '[data-id="suspicious_activity"]', correct: true, explain: "Claims of suspicious activity to create fear and rush the user." },
+            { id: "deadline_warning", selector: '[data-id="deadline_warning"]', correct: true, explain: "Creates urgency and pressure to click — common phishing tactic." },
+            { id: "protect_phrase", selector: '[data-id="protect_phrase"]', correct: true, explain: "Asks you to take action 'to protect' — often used to push users to click." },
+            { id: "click_link", selector: '[data-id="click_link"]', correct: true, explain: "Contains an external URL and instruction to enter details — never do this for suspicious mails." },
+            { id: "signature", selector: '[data-id="signature"]', correct: false, explain: "Signature looks official but isn't proof of legitimacy." }
           ]
         }
       ]
     }
   ]
-
-// Map van id → correct/fout
-const elementCorrectMap = {};
-quiz[0].elements.forEach(item => {
-  elementCorrectMap[item.id] = item.correct;
-});
-
-// Click-event
-document.querySelectorAll(".mail-element").forEach(el => {
-  el.addEventListener("click", () => {
-    el.classList.toggle("selected");
-    el.classList.remove("correct", "incorrect");
-
-    const id = el.dataset.id;
-    if (el.classList.contains("selected")) {
-      if (elementCorrectMap[id]) {
-        el.classList.add("correct");   // correct element
-      } else {
-        el.classList.add("incorrect"); // fout element
-      }
-    }
-  });
-});
+}
+  ];
