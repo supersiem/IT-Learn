@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
 <head>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <meta charset="UTF-8" />
@@ -14,9 +14,9 @@
     <nav class="sidebar">
       <h2>IT Learn</h2>
       <ul>
-        <li><a href="#" id="profile-link">Profiel</a></li>
+        <li><a href="#" id="profile-link">Profile</a></li>
         <li><a href="#" id="badges-link">Badges</a></li>
-        <li><a href="#" id="settings-link">Instellingen</a></li>
+        <li><a href="#" id="settings-link">Settings</a></li>
       </ul>
       <button id="auth-btn">Log Out</button>
     </nav>
@@ -26,27 +26,27 @@
       <header>
         <h1>IT Learn</h1>
         <img src="icons/IT-Learn.jpg" alt="IT-Learn" id="mascot-image" />
-        <p>Leer stap voor stap programmeren met populaire programmeertalen!</p>
+        <p>Learn to code step by step with popular programming languages!</p>
       </header>
 
       <section id="modules-list">
-        <h2>Kies een programmeertaal</h2>
+        <h2>Choose a programming language</h2>
         <ul id="module-buttons"></ul>
       </section>
 
       <section id="lesson-section" class="hidden">
-        <button id="back-to-modules">&larr; Terug naar alle programmeertalen</button>
+        <button id="back-to-modules">&larr; Back to all programming languages</button>
         <h2 id="lesson-title"></h2>
         <article id="lesson-content"></article>
 
         <div id="quiz-section" class="hidden">
           <h3>Quiz</h3>
           <form id="quiz-form"></form>
-          <button id="submit-quiz">Beantwoord</button>
+          <button id="submit-quiz">Submit</button>
           <p id="quiz-feedback"></p>
         </div>
 
-        <button id="next-lesson" class="hidden">Volgende les &rarr;</button>
+        <button id="next-lesson" class="hidden">Next lesson &rarr;</button>
       </section>
 
       <a href="https://discord.gg/rKgF9s32EV" target="_blank" class="discord-button">
@@ -54,7 +54,7 @@
       </a>
       
       <section id="progress-section">
-        <h2>Voortgang</h2>
+        <h2>Progress</h2>
         <div id="progress-info"></div>
         <div id="progress-bar-container">
           <div id="progress-bar"></div>
@@ -68,10 +68,10 @@
     </main>
   </div>
 
-  <!-- Mascot en audio -->
+  <!-- Mascot and audio -->
   <div id="mascot-container" aria-live="polite" aria-atomic="true" role="region">
-    <img src="icons/IT-Learn.jpg" alt="Mascotte" id="mascot-image" />
-    <div id="mascot-bubble">Hoi! Klaar om te programmeren?</div>
+    <img src="icons/IT-Learn.jpg" alt="Mascot" id="mascot-image" />
+    <div id="mascot-bubble">Hi! Ready to code?</div>
   </div>
 
   <audio id="audio-correct" src="sounds/correct.mp3" preload="auto"></audio>
@@ -82,4 +82,3 @@
   <script src="app.js"></script>
 </body>
 </html>
-
