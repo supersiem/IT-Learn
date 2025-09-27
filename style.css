@@ -329,8 +329,8 @@ body{
   max-width: 320px;
 }
 #mascot-container img{
-  width: 88px;
-  height: 88px;
+  width: 72px;
+  height: 72px;
   object-fit: cover;
   border-radius: 12px;
   box-shadow: var(--shadow-2);
@@ -339,10 +339,10 @@ body{
   background: linear-gradient(115deg, rgba(226,17,198,0.68), rgba(116,7,249,0.6));
   color: white;
   border-radius: 20px;
-  padding: 0.7rem 1rem;
-  font-weight: 700;
+  padding: 0.6rem 0.7rem;
+  font-weight: 600;
   box-shadow: 0 8px 30px rgba(0,0,0,0.45);
-  max-width: 260px;
+  max-width: 200px;
 }
 
 /* audio elements invisible but accessible */
@@ -480,3 +480,4 @@ button:focus, a:focus { outline: 2px solid rgba(147,197,253,0.12); outline-offse
   background: rgba(234,67,53,0.12);
   outline: 2px solid rgba(234,67,53,0.2);
 }
+
