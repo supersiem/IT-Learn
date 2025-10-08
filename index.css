@@ -574,4 +574,8 @@ img{ display:block; max-width:100%; height:auto }
 /* tiny animation for icons */
 i[data-feather] svg{ vertical-align:middle }
 
-/* end of style.css */
+.student_with_itlearn {
+  width: 400px;
+  border-radius: 30px;
+  object-fit: cover;
+}
