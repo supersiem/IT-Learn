@@ -236,7 +236,7 @@ function updateMissionsUI() {
         { id: "xp100", text: "Earn 100 XP", condition: xp >= 100 },
         { id: "streak3", text: "Study for 3 days in a row", condition: streak >= 3 }
     ];
-    missionsInfo.innerHTML = "<strong>Missies:</strong><br>";
+    missionsInfo.innerHTML = "<strong>Missions:</strong><br>";
     allMissions.forEach(m => {
         if (!missions[m.id] && m.condition) {
             missions[m.id] = true;
@@ -335,7 +335,7 @@ function showLesson(moduleId, lessonIndex) {
         submitQuizBtn.style.display = "inline-block";
         buildQuiz(lesson.quiz);
     }
-    showMascotMessage(`Je leest nu: "${lesson.title}"`);
+    showMascotMessage(`You are now reading: "${lesson.title}"`);
 }
 
 // ---------------------------- Quiz ----------------------------
