@@ -54,6 +54,7 @@ async function loadProgressFromAPI() {
         const data = await res.json();
         if (data.error) {
             console.error("Load progress error:", data.error);
+            // fallback: empty progress
             progress = {};
             xp = 0;
             streak = 0;
@@ -62,6 +63,7 @@ async function loadProgressFromAPI() {
             mistakes = [];
             return;
         }
+        // Als nested progress_data aanwezig is
         if (data.progress_data) Object.assign(data, data.progress_data);
 
         progress = data.progress || {};
@@ -152,35 +154,6 @@ async function signup(email, password) {
     }
 }
 
-
-// ---------------------------- Log Out ----------------------------
-const authBtn = document.getElementById("auth-btn");
-
-authBtn.addEventListener("click", async () => {
-    try {
-        const res = await fetch(`${HOST}/api/logout`, {
-            method: "POST",
-            credentials: "include",
-        });
-        const data = await res.json();
-        if (data.success) {
-            currentUser = null;
-            progress = {};
-            xp = 0;
-            streak = 0;
-            lastActive = null;
-            missions = {};
-            mistakes = [];
-
-            window.location.href = "/login.html";
-        } else {
-            console.error("Logout failed:", data.error);
-        }
-    } catch (err) {
-        console.error("Logout error:", err);
-    }
-});
-
 // ---------------------------- Streak & Level ----------------------------
 function updateStreak() {
     const today = new Date().toDateString();
@@ -208,12 +181,12 @@ function updateProgressUI() {
         totalLessons += mod.lessons.length;
         if (progress[mod.id]) completedLessons += Object.keys(progress[mod.id]).length;
     }
-    progressInfo.textContent = `You have completed ${completedLessons} of the ${totalLessons} lessons.`;
+    progressInfo.textContent = `Je hebt ${completedLessons} van de ${totalLessons} lessen afgerond.`;
     const percent = totalLessons === 0 ? 0 : (completedLessons / totalLessons) * 100;
     progressBar.style.width = percent + "%";
     xpInfo.textContent = `XP: ${xp}`;
     levelInfo.textContent = `Level: ${getLevel()}`;
-    streakInfo.textContent = `Streak: ${streak} day${streak !== 1 ? "s" : ""} in a row`;
+    streakInfo.textContent = `Streak: ${streak} dag${streak !== 1 ? "en" : ""} achter elkaar`;
 
     // Badges
     const badgesCount = Math.floor(completedLessons / 5);
@@ -232,15 +205,15 @@ function updateMissionsUI() {
     if (!missions) missions = {};
     const totalLessonsDone = Object.values(progress).reduce((acc, modObj) => acc + Object.keys(modObj).length, 0);
     const allMissions = [
-        { id: "lessons10", text: "Complete 10 lessons", condition: totalLessonsDone >= 10 },
-        { id: "xp100", text: "Earn 100 XP", condition: xp >= 100 },
-        { id: "streak3", text: "Study for 3 days in a row", condition: streak >= 3 }
+        { id: "lessons10", text: "Behaal 10 lessen", condition: totalLessonsDone >= 10 },
+        { id: "xp100", text: "Verdien 100 XP", condition: xp >= 100 },
+        { id: "streak3", text: "Leer 3 dagen achter elkaar", condition: streak >= 3 }
     ];
     missionsInfo.innerHTML = "<strong>Missions:</strong><br>";
     allMissions.forEach(m => {
         if (!missions[m.id] && m.condition) {
             missions[m.id] = true;
-            showMascotMessage(`🎉 You completed the mission "${m.text}"!`);
+            showMascotMessage(`🎉 Je hebt de missie "${m.text}" voltooid!`);
             saveProgressToAPI();
         }
         missionsInfo.innerHTML += `${missions[m.id] ? "✅" : "❌"} ${m.text}<br>`;
@@ -258,6 +231,7 @@ function markLessonCompleted(moduleId, lessonId) {
     saveProgressToAPI(); 
 }
 
+// Voor testen: alle modules altijd unlocked
 function isModuleUnlocked(moduleId) {
     return true;
 }
@@ -269,18 +243,10 @@ function showModules() {
     quizFeedback.textContent = "";
     nextLessonBtn.classList.add("hidden");
     backToModulesBtn.style.display = "none";
-    showMascotMessage("Choose a module to get started!");
+    showMascotMessage("Kies een module om te starten!");
     renderModuleButtons();
-
-    const sidebar = document.querySelector("nav.sidebar");
-    if (sidebar) sidebar.style.display = "flex";
-
-    const discordBtn = document.querySelector(".discord-button");
-    if (discordBtn) discordBtn.style.left = "calc(260px + 1rem + 12px)";
-
     updateProgressUI();
 }
-
 
 function renderModuleButtons() {
     moduleButtons.innerHTML = "";
@@ -319,7 +285,7 @@ function showLessonsList(moduleId) {
         ul.appendChild(li);
     });
     lessonContent.appendChild(ul);
-    showMascotMessage(`Choose a lesson in module "${currentModule.title}"`);
+    showMascotMessage(`Kies een les in module "${currentModule.title}"`);
 }
 
 function showLesson(moduleId, lessonIndex) {
@@ -337,13 +303,6 @@ function showLesson(moduleId, lessonIndex) {
     document.getElementById("modules-list").classList.add("hidden");
     lessonSection.classList.remove("hidden");
 
-    const sidebar = document.querySelector("nav.sidebar");
-    if (sidebar) sidebar.style.display = "none";
-
-    
-    const discordBtn = document.querySelector(".discord-button");
-    if (discordBtn) discordBtn.style.left = "12px";
-
     if (lesson.quiz && lesson.quiz.length) {
         quizSection.classList.remove("hidden");
         submitQuizBtn.style.display = "inline-block";
@@ -355,40 +314,11 @@ function showLesson(moduleId, lessonIndex) {
 // ---------------------------- Quiz ----------------------------
 function buildQuiz(quizArray) {
     quizForm.innerHTML = "";
-    quizFeedback.textContent = "";
-
     quizArray.forEach((q, i) => {
-        if (q.type === "mail") {
-            const mailContainer = document.createElement("div");
-            mailContainer.innerHTML = q.mailHtml;
-            quizForm.appendChild(mailContainer);
-
-            const feedbackBox = document.createElement("div");
-            feedbackBox.className = "mail-feedback";
-            quizForm.appendChild(feedbackBox);
-
-            q.elements.forEach(el => {
-                const target = mailContainer.querySelector(el.selector);
-                if (target) {
-                    target.addEventListener("click", () => {
-                        if (target.classList.contains("correct") || target.classList.contains("incorrect")) return;
-
-                        target.classList.add(el.correct ? "correct" : "incorrect");
-                        const p = document.createElement("p");
-                        p.className = el.correct ? "correct-text" : "incorrect-text";
-                        p.textContent = el.explain;
-                        feedbackBox.appendChild(p);
-                    });
-                }
-            });
-            return;
-        }
-
         const fieldset = document.createElement("fieldset");
         const legend = document.createElement("legend");
         legend.textContent = q.question;
         fieldset.appendChild(legend);
-
         q.options.forEach((opt, idx) => {
             const label = document.createElement("label");
             const radio = document.createElement("input");
@@ -399,12 +329,10 @@ function buildQuiz(quizArray) {
             label.appendChild(document.createTextNode(opt));
             fieldset.appendChild(label);
         });
-
         quizForm.appendChild(fieldset);
     });
+    quizFeedback.textContent = "";
 }
-
-
 
 submitQuizBtn.addEventListener("click", () => {
     if (!currentModule) return;
@@ -413,63 +341,43 @@ submitQuizBtn.addEventListener("click", () => {
 
     const quiz = lesson.quiz;
     let correctCount = 0;
-
     for (let i = 0; i < quiz.length; i++) {
-        const q = quiz[i];
-
-        if (q.type === "mail") {
-            const mailContainer = quizForm.querySelector(".mail-view");
-            let allCorrectClicked = true;
-
-            q.elements.forEach(el => {
-                if (el.correct) {
-                    const elNode = mailContainer.querySelector(el.selector);
-                    if (!elNode.classList.contains("correct")) allCorrectClicked = false;
-                }
-            });
-
-            if (allCorrectClicked) correctCount++;
-        } else {
-            const radios = document.getElementsByName(`question-${i}`);
-            let answered = false;
-
-            for (const radio of radios) {
-                if (radio.checked) {
-                    answered = true;
-                    if (parseInt(radio.value) === q.correct) {
-                        correctCount++;
-                        removeMistake(currentModule.id, lesson.id, i);
-                    } else {
-                        addMistake(currentModule.id, lesson.id, i);
-                    }
+        const radios = document.getElementsByName(`question-${i}`);
+        let answered = false;
+        for (const radio of radios) {
+            if (radio.checked) {
+                answered = true;
+                if (parseInt(radio.value) === quiz[i].correct) { 
+                    correctCount++; 
+                    removeMistake(currentModule.id, lesson.id, i); 
+                } else {
+                    addMistake(currentModule.id, lesson.id, i);
                 }
             }
-
-            if (!answered) {
-                alert(`Beantwoord vraag ${i + 1} eerst.`);
-                return;
-            }
+        }
+        if (!answered) { 
+            alert(`Beantwoord vraag ${i + 1} eerst.`); 
+            return; 
         }
     }
 
     if (correctCount === quiz.length) {
-        quizFeedback.textContent = "Well done! All answers are correct.";
-        if (!isLessonCompleted(currentModule.id, lesson.id)) {
-            xp += 10;
-            markLessonCompleted(currentModule.id, lesson.id);
-            updateProgressUI();
-            saveProgressToAPI();
+        quizFeedback.textContent = "Goed gedaan! Alle antwoorden kloppen.";
+        if (!isLessonCompleted(currentModule.id, lesson.id)) { 
+            xp += 10; 
+            markLessonCompleted(currentModule.id, lesson.id); 
+            updateProgressUI(); 
+            saveProgressToAPI(); 
         }
         correctSound.play();
         nextLessonBtn.classList.remove("hidden");
         submitQuizBtn.style.display = "none";
-        showMascotMessage("You have successfully completed this lesson!");
+        showMascotMessage("Je hebt deze les succesvol afgerond!");
     } else {
-        quizFeedback.textContent = `You got ${quiz.length - correctCount} wrong. Please try again!`;
+        quizFeedback.textContent = `Je had ${quiz.length - correctCount} fout${quiz.length - correctCount !== 1 ? "en" : ""}. Probeer het nog eens!`;
         wrongSound.play();
     }
 });
-
 
 function addMistake(moduleId, lessonId, questionIndex) { 
     if (!mistakes.some(m => m.moduleId === moduleId && m.lessonId === lessonId && m.questionIndex === questionIndex)) { 
@@ -496,38 +404,11 @@ document.addEventListener('keydown', e => { if (e.key === 'F12' || (e.ctrlKey &&
 document.addEventListener('contextmenu', e => e.preventDefault());
 
 // ---------------------------- Code Editor ----------------------------
-function runCode(id, expectedOutput = "") {
-    const textarea = document.getElementById(`code-editor-${id}`);
+function runCode(id) {
+    const code = document.getElementById(`code-editor-${id}`).value;
     const iframe = document.getElementById(`output-frame-${id}`);
-    if (!textarea || !iframe) return;
-
-    const code = textarea.value;
     iframe.srcdoc = `<style>body{background:#0f172a;color:#fff;font-family:sans-serif;}</style>${code}`;
-
-    if (!expectedOutput) return; 
-
-    setTimeout(() => {
-        const doc = iframe.contentDocument || iframe.contentWindow.document;
-        const outputText = (doc.body.innerText || "").trim();
-        const lesson = currentModule.lessons[currentLessonIndex];
-
-        if (outputText === expectedOutput) {
-            if (!isLessonCompleted(currentModule.id, lesson.id)) {
-                xp += 10;
-                markLessonCompleted(currentModule.id, lesson.id);
-                updateProgressUI();
-                saveProgressToAPI();
-            }
-            correctSound.play();
-            nextLessonBtn.classList.remove("hidden");
-            showMascotMessage("✅ Correct output! Lesson completed!");
-        } else {
-            wrongSound.play();
-            showMascotMessage("⚠️ Output incorrect, probeer opnieuw!");
-        }
-    }, 50);
 }
-
 
 // ---------------------------- Init ----------------------------
 async function initApp() {
