@@ -281,6 +281,16 @@ body {
   max-width: 40vw;
   display: block
 }
+/* decorative jack-o-lantern */
+.jack-o-lantern {
+  position: absolute;
+  bottom: 95px;
+  right: 50px;
+  width: 160px;
+  opacity: 0.85;
+  pointer-events: none;
+  user-select: none;
+}
 
 /* ========== COURSES ========== */
 .section {
@@ -563,6 +573,15 @@ body {
 }
 
 /* ========== STATS ========== */
+.stats-pumpkin {
+  position: absolute;
+  top: -55px;
+  left: 400px;
+  width: 135px;
+  opacity: 0.75;
+  pointer-events: none;
+  user-select: none;
+}
 .stats-grid {
   width: 100%;
   display: grid;
@@ -899,25 +918,43 @@ i[data-feather] svg {
 }
 
 /* ========== SPIDER (decorative) ========== */
+@keyframes swingSpider {
+  0% { transform: rotate(-6deg); }
+  50% { transform: rotate(6deg); }
+  100% { transform: rotate(-6deg); }
+}
+
+.spider-container {
+  position: fixed;
+  left: 9%;
+  top: -10px;
+  width: 100px;
+  height: 400px;
+  pointer-events: none;
+  z-index: 1000;
+}
+
 .spider-wrapper {
   position: relative;
-  width: 80px;
-  /* more space for a much larger spider */
-  height: 220px;
-  /* hang much lower from the navbar */
+  width: 100px;
+  height: 400px;
   display: flex;
   align-items: flex-start;
   justify-content: center;
   pointer-events: none;
-  /* decorative, not interactive */
+  transform-origin: center top;
+  animation: swingSpider 3s ease-in-out infinite;
+}
+
+.spider-wrapper:hover {
+  animation: swingSpider 1.5s ease-in-out infinite;
 }
 
 .spider-line {
   position: absolute;
-  top: 8px;
-  width: 3px;
-  height: 180px;
-  /* much longer line so spider hangs lower */
+  top: 9px;
+  width: 4px;
+  height: 130px;
   background: linear-gradient(180deg, rgb(255, 255, 255), rgb(255, 255, 255));
   left: 50%;
   transform: translateX(-50%);
@@ -927,46 +964,17 @@ i[data-feather] svg {
 
 .spider-img {
   position: absolute;
-  top: 188px;
-  /* place the spider near the end of the much longer line */
+  top: 130px;
   left: 50%;
-  transform: translateX(-50%) rotate(0deg);
+  transform: translateX(-50%);
   width: 120px;
-  /* much larger spider */
   height: 120px;
-  transition: transform 200ms ease;
   z-index: 999;
-}
-
-/* Make the spider swing slightly when hovering the navbar */
-.navbar:hover .spider-img {
-  transform: translateX(-50%) rotate(10deg);
-  transition: transform 350ms cubic-bezier(.2, .8, .2, 1);
-}
-
-/* Subtle continuous idle swing using animation */
-@keyframes spider-sway {
-  0% {
-    transform: translateX(-50%) rotate(-6deg);
-  }
-
-  50% {
-    transform: translateX(-50%) rotate(6deg);
-  }
-
-  100% {
-    transform: translateX(-50%) rotate(-6deg);
-  }
-}
-
-.spider-img {
-  animation: spider-sway 4.5s ease-in-out infinite;
-  transform-origin: 50% 0%;
 }
 
 /* Hide spider on very small screens to avoid clutter */
 @media (max-width: 520px) {
   .spider-wrapper {
-    display: none
+    display: none;
   }
 }

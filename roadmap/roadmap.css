@@ -22,6 +22,60 @@ header {
   animation-fill-mode: both;
   animation-delay: 0.12s;
 }
+/* ========== SPIDER (decorative) ========== */
+@keyframes swingSpider {
+  0% { transform: rotate(-6deg); }
+  50% { transform: rotate(6deg); }
+  100% { transform: rotate(-6deg); }
+}
+
+.spider-container {
+  position: fixed;
+  left: 8%;
+  top: -10px;
+  width: 100px;
+  height: 400px;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.spider-wrapper {
+  position: relative;
+  width: 100px;
+  height: 300px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  pointer-events: none;
+  transform-origin: center top;
+  animation: swingSpider 3s ease-in-out infinite;
+}
+
+.spider-wrapper:hover {
+  animation: swingSpider 1.5s ease-in-out infinite;
+}
+
+.spider-line {
+  position: absolute;
+  top: 9px;
+  width: 4px;
+  height: 180px;
+  background: linear-gradient(180deg, rgb(255, 255, 255), rgb(255, 255, 255));
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+  z-index: 998;
+}
+
+.spider-img {
+  position: absolute;
+  top: 188px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 120px;
+  z-index: 999;
+}
 
 /* sections: initial hidden, then fadeUp with staggered delays */
 .roadmap-do,
