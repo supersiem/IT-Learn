@@ -11,7 +11,7 @@
 
   <!-- AOS -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
+  
   <!-- Feather Icons -->
   <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 
@@ -56,7 +56,7 @@
   <header class="hero hero-gradient">
     <div class="container hero-inner" data-aos="fade-up">
       <div class="hero-copy">
-        <h1 class="hero-title">Discover the<span class="highlight">World of Coding</span></h1>
+        <h1 class="hero-title">Discover the <span class="highlight">World of Coding</span></h1>
         <p class="hero-sub">Coding made easy by students for students.</p>
 
         <div class="hero-ctas" data-aos="fade-up" data-aos-delay="100">
@@ -332,10 +332,29 @@
         // stuur door naar login en meld waar we naartoe moeten terugkeren
         window.location.href = 'login.html?next=' + encodeURIComponent(target);
       }
+    }); 
+  </script>
+  
+  <!-- Snow Effect -->
+  <script src='https://cdn.jsdelivr.net/gh/helpercode0/jsdeploy@main/snoweffect-react/1/1.2/js/script.js'></script>
+  <script>
+    window.addEventListener('load', () => {
+      const canvas = document.querySelector('canvas');
+      if (canvas) {
+        canvas.style.position = 'absolute';
+        canvas.style.top = '0';
+        canvas.style.left = '0';
+        canvas.style.width = '100%';
+        canvas.style.height = '100%';
+        canvas.style.zIndex = '0';
+        canvas.style.pointerEvents = 'none';
+      }
+  
+      document.body.style.height = 'auto';
+      document.body.style.overflowY = 'auto';
     });
   </script>
+  
+  
 </body>
 </html>
-
-
-
