@@ -4,9 +4,9 @@
     --panel: #0b1220;
     --muted: #94a3b8;
     --muted-2: #c7d2fe;
-    --accent-500: #6366f1;
+    --accent-500: #9013af;
     --accent-600: #4f46e5;
-    --accent-700: #4338ca;
+    --accent-700: #1709a8;
     --glass: rgba(79, 70, 229, 0.06);
     --card: #0f172a;
     --card-2: #0b1220;
@@ -39,7 +39,7 @@ body {
 .header h1 {
     font-size: 3rem;
     font-weight: var(--fw-bold);
-    color: var(--accent-500);
+    color: var(--accent-600);
     margin-bottom: 10px;
 }
 
@@ -50,35 +50,38 @@ body {
 
 /* Escape / Close button */
 .escape {
-  position: fixed; /* blijft bovenaan staan bij scrollen */
-  top: 1rem;
-  right: 1rem;
-  background: rgba(79,70,229,0.15); /* subtiele accentkleur */
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  width: 36px;
-  height: 36px;
-  font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 14px rgba(2,6,23,0.4);
-  transition: all 0.18s ease;
-  z-index: 999; /* altijd boven andere content */
+    position: fixed;
+    /* blijft bovenaan staan bij scrollen */
+    top: 1rem;
+    right: 1rem;
+    background: rgba(79, 70, 229, 0.15);
+    /* subtiele accentkleur */
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 14px rgba(2, 6, 23, 0.4);
+    transition: all 0.18s ease;
+    z-index: 999;
+    /* altijd boven andere content */
 }
 
 .escape:hover {
-  background: rgba(79,70,229,0.25);
-  transform: scale(1.1);
-  box-shadow: 0 6px 20px rgba(2,6,23,0.5);
+    background: rgba(79, 70, 229, 0.25);
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(2, 6, 23, 0.5);
 }
 
 .escape:active {
-  transform: scale(0.95);
-  box-shadow: 0 2px 10px rgba(2,6,23,0.4);
+    transform: scale(0.95);
+    box-shadow: 0 2px 10px rgba(2, 6, 23, 0.4);
 }
 
 /* Timeline layout */
@@ -97,7 +100,9 @@ body {
     bottom: 0;
     left: calc(50% + 7px);
     width: 4px;
-    background-color: var(--accent-600);
+    background: linear-gradient(to bottom,
+            var(--accent-700),
+            var(--accent-600));
     transform: translateX(-50%);
     border-radius: 2px;
 }
@@ -144,7 +149,7 @@ body {
 
 /* tekstkleur en titels */
 .story h2 {
-    color: var(--accent-500);
+    color: var(--accent-600);
     margin-bottom: 10px;
 }
 
@@ -152,8 +157,14 @@ body {
     color: var(--muted);
 }
 
+.story:hover {
+    background: linear-gradient(90deg, #3a0b41, #3b1253);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
 .highlight {
-    background-color: rgba(99,102,241,0.2); /* lichte paarse highlight */
+    background-color: rgba(99, 102, 241, 0.2);
     padding: 2px 4px;
     border-radius: 4px;
     color: var(--accent-500);
