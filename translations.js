@@ -37,7 +37,7 @@ const translations = {
         landingfooterpractice: 'PRACTICE',
         landingfooterchallenges: 'Challenges',
         landingfooterprojects: 'Projects',
-        'hero-title': 'Discover the World of Coding',
+        'hero-title': 'Discover the <span class="highlight">World of Coding</span>',
         'hero-sub': 'Coding made easy by students for students.',
         'section-title': 'Set off on your programming adventure.',
         'section-sub': 'Discover coding with interactive courses built to make learning fun and easy.',
@@ -192,7 +192,7 @@ const translations = {
         landingfooterpractice: 'OEFEN',
         landingfooterchallenges: 'Uitdagingen',
         landingfooterprojects: 'Projecten',
-        'hero-title': 'Ontdek de Wereld van Coderen',
+        'hero-title': 'Ontdek de <span class="highlight">Wereld van Coderen</span>',
         'hero-sub': 'Coderen eenvoudig gemaakt door studenten voor studenten.',
         'section-title': 'Begin aan je programmeeravontuur',
         'section-sub': 'Ontdek coderen met interactieve cursussen die leren leuk en makkelijk maken.',
@@ -351,17 +351,16 @@ const translations = {
 function updatePageLanguage(lang) {
     document.documentElement.lang = lang;
     const elements = document.querySelectorAll('[data-translate]');
+    
     elements.forEach(element => {
         const key = element.dataset.translate;
-        if (translations[lang] && translations[lang][key]) {
-            if (element.tagName.toLowerCase() === 'input') {
-                element.placeholder = translations[lang][key];
-            } else {
-                element.textContent = translations[lang][key];
-            }
+        const translation = translations[lang]?.[key];
+        if (translation) {
+            element.innerHTML = translation;
         }
     });
 }
+
 
 // Language selector functionality
 function initializeLanguageSelector() {
