@@ -7,25 +7,33 @@ const modulesData =
       title: "HTML",
       lessons: [
         {
-          id: "html_headings",
-          title: "Headings",
+          id: "What is HTML",
+          title: "What is HTML?",
           content: `
           <div class="lesson-layout">
-            <!-- Explanation (left) -->
             <div class="lesson-explanation">
-              <h2>HTML Headings</h2>
+              <h2>What is HTML?</h2>
               <p>
-                With HTML headings you create titles and subtitles on a webpage.
-                There are 6 levels: <code>&lt;h1&gt;</code> through <code>&lt;h6&gt;</code>.
+                Welcome to The Origins Trilogy! The beginning of your web development journey.
+                The language we are learning is HTML or HyperText Markup Language. It was created by a developer named Tim Berners-Lee in 1991.
+                Today, every website you visit is built using HTML.
+                As the name suggests, HTML is a markup language, not a programming language. This means it is used to structure content on the web, not to create dynamic functionality.
+                However, HTML is just one piece used to build a web page. Most web pages use:
+                HTML for structure,
+                CSS for styling, and
+                JavaScript for interactivity.
+                This course will focus on HTML, the backbone of web pages. The programs we write will be files with the extension .html.
+                Ah one more thing, you need a code editor! A code editor is a text editor that can write and run code.
+                And we have one here. Let's test it out!
               </p>
-              <pre><code>&lt;h1&gt;This is a heading&lt;/h1&gt;</code></pre>
+              <pre><code><h2>Write the date</h2>
+<p>Write your wish</p></code></pre>
             </div>
 
             <!-- Editor in the middle -->
             <div class="lesson-editor">
               <textarea id="code-editor-html-headings">
-<h1>My first heading</h1>
-<p>This is a paragraph.</p>
+<--Write code below -->
               </textarea>
               <button onclick="runCode('html-headings')">▶ Run</button>
             </div>
