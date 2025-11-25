@@ -1,105 +1,84 @@
-<!DOCTYPE html>
-<html lang="en">
+<title>IT Learn | Sign Up</title>
+<link rel="stylesheet" href="signup.css" />
+<script src="https://hcaptcha.com/1/api.js" async defer></script>
 
-<head>
-     <link rel="icon" href="/favicon.ico" type="image/x-icon">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IT Learn | Sign Up</title>
-  <link rel="stylesheet" href="signup.css" />
-  <script src="https://hcaptcha.com/1/api.js" async defer></script>
-</head>
+<button class="escape" onclick="window.navigateTo('home.html');">X</button>
 
-<body>
+<div class="container">
+  <div class="form-box">
+    <h1 data-translate="signup">Sign Up</h1>
 
-<!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/690b61d5727def194d09e47e/1j9a7caec';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-<!--End of Tawk.to Script-->
+    <form id="signup-form">
+      <div class="input-group">
+        <label for="email" data-translate="email">Email</label>
+        <input type="email" id="email" placeholder="Enter your email" data-translate="enterEmail" required />
+      </div>
 
-  <button class="escape" onclick="window.location.href='index.html'">X</button>
+      <div class="input-group">
+        <label for="password" data-translate="password">Password</label>
+        <input type="password" id="password" placeholder="Create a password" data-translate="createPassword" required />
+      </div>
 
-  <div class="container">
-    <div class="form-box">
-      <h1 data-translate="signup">Sign Up</h1>
+      <div class="input-group">
+        <label for="confirm-password" data-translate="confirmPassword">Confirm Password</label>
+        <input type="password" id="confirm-password" placeholder="Re-enter your password"
+          data-translate="reenterPassword" required />
+      </div>
+      <!-- hCaptcha widget -->
+      <div class="h-captcha" data-sitekey="b03c75ae-fc52-45a4-a392-a9ee220e97ea"></div>
 
-      <form id="signup-form">
-        <div class="input-group">
-          <label for="email" data-translate="email">Email</label>
-          <input type="email" id="email" placeholder="Enter your email" data-translate="enterEmail" required />
-        </div>
+      <div class="input-group" style="margin-top:.5rem;">
+        <label style="display:flex;gap:.5rem;align-items:center;cursor:pointer;">
+          <input type="checkbox" id="accept-terms" style="width:16px;height:16px;" />
+          <span data-translate="iAgree">I agree to the</span> <a href="/terms/terms.html" target="_blank"
+            rel="noopener noreferrer" data-translate="signupTerms">Terms and Conditions</a>
+        </label>
+      </div>
 
-        <div class="input-group">
-          <label for="password" data-translate="password">Password</label>
-          <input type="password" id="password" placeholder="Create a password" data-translate="createPassword" required />
-        </div>
+      <button type="submit" class="btn" data-translate="createAccount">Create account</button>
+    </form>
 
-        <div class="input-group">
-          <label for="confirm-password" data-translate="confirmPassword">Confirm Password</label>
-          <input type="password" id="confirm-password" placeholder="Re-enter your password" data-translate="reenterPassword" required />
-        </div>
-        <!-- hCaptcha widget -->
-        <div class="h-captcha" data-sitekey="b03c75ae-fc52-45a4-a392-a9ee220e97ea"></div>
+    <div class="or-divider"><span data-translate="or">OR</span></div>
 
-        <div class="input-group" style="margin-top:.5rem;">
-          <label style="display:flex;gap:.5rem;align-items:center;cursor:pointer;">
-            <input type="checkbox" id="accept-terms" style="width:16px;height:16px;" />
-            <span data-translate="iAgree">I agree to the</span> <a href="/terms/terms.html" target="_blank" rel="noopener noreferrer" data-translate="signupTerms">Terms and Conditions</a>
-          </label>
-        </div>
+    <button type="button" class="btn-google" id="google-login" data-translate="continueGoogle">Continue with
+      Google</button>
 
-        <button type="submit" class="btn" data-translate="createAccount">Create account</button>
-      </form>
-
-      <div class="or-divider"><span data-translate="or">OR</span></div>
-
-      <button type="button" class="btn-google" id="google-login" data-translate="continueGoogle">Continue with Google</button>
-
-      <p class="redirect-text" data-translate="alreadyHaveAccount">
-        Already have an account? <a href="login.html" data-translate="login">Log in</a>
-      </p>
-    </div>
+    <p class="redirect-text" data-translate="alreadyHaveAccount">
+      Already have an account? <a href="login.html" data-translate="login">Log in</a>
+    </p>
   </div>
+</div>
 
 <script>
-// Initialize language on page load
-document.addEventListener('DOMContentLoaded', () => {
+  // Initialize language on page load
+  document.addEventListener('page-changed', () => {
     document.body.setAttribute('data-page', 'signup');
     const storedLang = localStorage.getItem('language') || 'en';
     updatePageLanguage(storedLang);
     if (window.feather) {
-        feather.replace();
+      feather.replace();
     }
     // Update input placeholders after language change
     updateInputPlaceholders(storedLang);
-});
+  });
 
-function updateInputPlaceholders(lang) {
+  function updateInputPlaceholders(lang) {
     const emailInput = document.getElementById('email');
     const passwordInput = document.getElementById('password');
     const confirmPasswordInput = document.getElementById('confirm-password');
     if (emailInput) emailInput.placeholder = translations[lang]['enterEmail'] || 'Enter your email';
     if (passwordInput) passwordInput.placeholder = translations[lang]['createPassword'] || 'Create a password';
     if (confirmPasswordInput) confirmPasswordInput.placeholder = translations[lang]['reenterPassword'] || 'Re-enter your password';
-}
+  }
 
-// Also update placeholders when language changes
-const originalUpdatePageLanguage = window.updatePageLanguage;
-window.updatePageLanguage = function(lang) {
+  // Also update placeholders when language changes
+  const originalUpdatePageLanguage = window.updatePageLanguage;
+  window.updatePageLanguage = function (lang) {
     originalUpdatePageLanguage(lang);
     updateInputPlaceholders(lang);
-};
+  };
 
-document.getElementById("signup-form").addEventListener("submit", async (e) => {
+  document.getElementById("signup-form").addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const email = document.getElementById("email").value;
@@ -108,42 +87,42 @@ document.getElementById("signup-form").addEventListener("submit", async (e) => {
     const acceptTerms = document.getElementById("accept-terms").checked;
 
     if (password !== confirmPassword) {
-        alert("Passwords do not match");
-        return;
+      alert("Passwords do not match");
+      return;
     }
 
     if (!acceptTerms) {
-        alert("You must accept the terms and conditions");
-        return;
+      alert("You must accept the terms and conditions");
+      return;
     }
 
     // --- hCaptcha token ophalen ---
     const hcaptchaResponse = hcaptcha.getResponse();
     if (!hcaptchaResponse) {
-        alert("Please complete the captcha.");
-        return;
+      alert("Please complete the captcha.");
+      return;
     }
 
     try {
-        const res = await fetch("https://itlearn.pythonanywhere.com/api/signup", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email, password, captcha: hcaptchaResponse })
-        });
+      const res = await fetch("https://itlearn.pythonanywhere.com/api/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password, captcha: hcaptchaResponse })
+      });
 
-        const data = await res.json();
+      const data = await res.json();
 
-        if (data.error) {
-            alert("Error: " + data.error);
-        } else {
-            alert("Signup successful!");
-            window.location.href = "login.html";
-        }
+      if (data.error) {
+        alert("Error: " + data.error);
+      } else {
+        alert("Signup successful!");
+        window.location.href = "login.html";
+      }
     } catch (err) {
-        console.error(err);
-        alert("An error occurred while signing up.");
+      console.error(err);
+      alert("An error occurred while signing up.");
     }
-});
+  });
 </script>
 
 <script>
@@ -195,6 +174,3 @@ document.getElementById("signup-form").addEventListener("submit", async (e) => {
     box.appendChild(a);
   }
 </script>
-
-</body>
-</html>

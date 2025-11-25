@@ -1,34 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+<title>IT Learn | Login</title>
+<link rel="stylesheet" href="login.css" />
 
-<head>
-   <link rel="icon" href="/favicon.ico" type="image/x-icon">
-   <meta charset="UTF-8" />
-   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <title>IT Learn | Login</title>
-   <link rel="stylesheet" href="login.css" />
-
-   <!-- hCaptcha script -->
-    <script src="https://hcaptcha.com/1/api.js" async defer></script>
-</head>
-
-<body>
-
-<!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/690b61d5727def194d09e47e/1j9a7caec';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-<!--End of Tawk.to Script-->
-
-<button class="escape" onclick="window.location.href='index.html'">X</button>
+<button class="escape" onclick="window.navigateTo('home.html');">X</button>
 <div class="container">
   <div class="form-box">
     <h1>Login</h1>
@@ -66,33 +39,33 @@ s0.parentNode.insertBefore(s1,s0);
 
 <!-- Login via live Flask API -->
 <script>
-// Initialize language on page load
-document.addEventListener('DOMContentLoaded', () => {
+  // Initialize language on page load
+  document.addEventListener('page-changed', () => {
     document.body.setAttribute('data-page', 'login');
     const storedLang = localStorage.getItem('language') || 'en';
     updatePageLanguage(storedLang);
     if (window.feather) {
-        feather.replace();
+      feather.replace();
     }
     // Update input placeholders after language change
     updateInputPlaceholders(storedLang);
-});
+  });
 
-function updateInputPlaceholders(lang) {
+  function updateInputPlaceholders(lang) {
     const emailInput = document.getElementById('email');
     const passwordInput = document.getElementById('password');
     if (emailInput) emailInput.placeholder = translations[lang]['enterEmail'] || 'Enter your email';
     if (passwordInput) passwordInput.placeholder = translations[lang]['enterPassword'] || 'Enter your password';
-}
+  }
 
-// Also update placeholders when language changes
-const originalUpdatePageLanguage = window.updatePageLanguage;
-window.updatePageLanguage = function(lang) {
+  // Also update placeholders when language changes
+  const originalUpdatePageLanguage = window.updatePageLanguage;
+  window.updatePageLanguage = function (lang) {
     originalUpdatePageLanguage(lang);
     updateInputPlaceholders(lang);
-};
+  };
 
-document.getElementById("login-form").addEventListener("submit", async (e) => {
+  document.getElementById("login-form").addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const email = document.getElementById("email").value;
@@ -101,89 +74,86 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
     // Get hCaptcha token
     const captchaToken = hcaptcha.getResponse();
     if (!captchaToken) {
-        alert("Please complete the CAPTCHA.");
-        return;
+      alert("Please complete the CAPTCHA.");
+      return;
     }
 
     try {
-        const res = await fetch("https://itlearn.pythonanywhere.com/api/login", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            credentials: "include",
-            body: JSON.stringify({
-                email,
-                password,
-                captcha_token: captchaToken
-              })
+      const res = await fetch("https://itlearn.pythonanywhere.com/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({
+          email,
+          password,
+          captcha_token: captchaToken
+        })
 
-        });
+      });
 
-        const data = await res.json();
+      const data = await res.json();
 
-        if (data.error) {
-            alert("Error: " + data.error);
-            hcaptcha.reset(); // reset CAPTCHA
-        } else {
-            alert("Login successful!");
-            window.location.href = "/learn/learn.html";
-        }
+      if (data.error) {
+        alert("Error: " + data.error);
+        hcaptcha.reset(); // reset CAPTCHA
+      } else {
+        alert("Login successful!");
+        window.location.href = "/learn/learn.html";
+      }
     } catch (err) {
-        console.error(err);
-        alert("An error occurred while logging in.");
-        hcaptcha.reset();
+      console.error(err);
+      alert("An error occurred while logging in.");
+      hcaptcha.reset();
     }
-});
+  });
 </script>
 
 <!-- Random motivational splash -->
 <script>
-(function () {
-  const variants = [
-    { text: "Welcome aboard!" },
-    { text: "Create something cool ✨" },
-    { text: "Your dev journey starts here" },
-    { text: "Small steps, big builds" },
-    { text: "Design. Code. Repeat." },
-    { text: "Developed by Broodje56", link: "https://broodje56.is-a.dev" },
-    { text: "Developed by Joren", link: "https://github.com/JorenS15" },
-    { text: "Join Discord", link: "https://discord.gg/rKgF9s32EV" },
-    { text: "Programming = life" },
-    { text: "Keep pushing forward" },
-    { text: "Code your dreams" },
-    { text: "Debugging is fun" },
-    { text: "Eat, Sleep, Code, Repeat" },
-    { text: "Think twice, code once" },
-    { text: "Hello World!" },
-    { text: "Brain.exe has stopped working" },
-    { text: "Code like a boss" },
-    { text: "Syntax never sleeps" },
-    { text: "From ideas to apps" },
-    { text: "Your first bug is a friend" },
-    { text: "CTRL + S your progress" },
-    { text: "Keep calm and code on" },
-    { text: "One line at a time" },
-    { text: "Compile your dreams" },
-    { text: "Future dev in progress" },
-    { text: "Ready, set, deploy!" },
-    { text: "Hello, future programmer!" },
-    { text: "Error 404: File not found" },
-    { text: "Learning never stops" },
-    { text: "Coding + Music = ❤️", link: "https://open.spotify.com/track/4tZgM0PdoK8MG5jvMKdJkC" }
-  ];
+  (function () {
+    const variants = [
+      { text: "Welcome aboard!" },
+      { text: "Create something cool ✨" },
+      { text: "Your dev journey starts here" },
+      { text: "Small steps, big builds" },
+      { text: "Design. Code. Repeat." },
+      { text: "Developed by Broodje56", link: "https://broodje56.is-a.dev" },
+      { text: "Developed by Joren", link: "https://github.com/JorenS15" },
+      { text: "Join Discord", link: "https://discord.gg/rKgF9s32EV" },
+      { text: "Programming = life" },
+      { text: "Keep pushing forward" },
+      { text: "Code your dreams" },
+      { text: "Debugging is fun" },
+      { text: "Eat, Sleep, Code, Repeat" },
+      { text: "Think twice, code once" },
+      { text: "Hello World!" },
+      { text: "Brain.exe has stopped working" },
+      { text: "Code like a boss" },
+      { text: "Syntax never sleeps" },
+      { text: "From ideas to apps" },
+      { text: "Your first bug is a friend" },
+      { text: "CTRL + S your progress" },
+      { text: "Keep calm and code on" },
+      { text: "One line at a time" },
+      { text: "Compile your dreams" },
+      { text: "Future dev in progress" },
+      { text: "Ready, set, deploy!" },
+      { text: "Hello, future programmer!" },
+      { text: "Error 404: File not found" },
+      { text: "Learning never stops" },
+      { text: "Coding + Music = ❤️", link: "https://open.spotify.com/track/4tZgM0PdoK8MG5jvMKdJkC" }
+    ];
 
-  const choice = variants[Math.floor(Math.random() * variants.length)];
-  const box = document.querySelector('.form-box');
-  if (box) {
-    const a = document.createElement('a');
-    a.className = 'splash';
-    if (choice.link) a.href = choice.link;
-    a.target = '_blank';
-    a.rel = 'noopener noreferrer';
-    a.textContent = choice.text;
-    box.appendChild(a);
-  }
-})();
+    const choice = variants[Math.floor(Math.random() * variants.length)];
+    const box = document.querySelector('.form-box');
+    if (box) {
+      const a = document.createElement('a');
+      a.className = 'splash';
+      if (choice.link) a.href = choice.link;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      a.textContent = choice.text;
+      box.appendChild(a);
+    }
+  })();
 </script>
-
-</body>
-</html>

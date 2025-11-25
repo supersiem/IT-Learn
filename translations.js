@@ -169,7 +169,7 @@ const translations = {
         'helloFutureProgrammer': 'Hello, future programmer!',
         'error404': 'Error 404: File not found',
         'learningNeverStops': 'Learning never stops',
-                'codingPlusMusic': 'Coding + Music = ❤️',
+        'codingPlusMusic': 'Coding + Music = ❤️',
         'emailVerified': '✅ Email Verified!',
         'verifySuccessMessage': 'Your account has been successfully confirmed. You can now login to continue your learning journey.',
         'goToLogin': 'Go to Login',
@@ -347,7 +347,7 @@ const translations = {
         'helloFutureProgrammer': 'Hallo, toekomstige programmeur!',
         'error404': 'Fout 404: Bestand niet gevonden',
         'learningNeverStops': 'Leren stopt nooit',
-                'codingPlusMusic': 'Coderen + Muziek = ❤️',
+        'codingPlusMusic': 'Coderen + Muziek = ❤️',
         'emailVerified': '✅ E-mail geverifieerd!',
         'verifySuccessMessage': 'Je account is succesvol bevestigd. Je kunt nu inloggen om verder te gaan met je leerreis.',
         'goToLogin': 'Ga naar Inloggen',
@@ -401,7 +401,7 @@ const translations = {
 function updatePageLanguage(lang) {
     document.documentElement.lang = lang;
     const elements = document.querySelectorAll('[data-translate]');
-    
+
     elements.forEach(element => {
         const key = element.dataset.translate;
         const translation = translations[lang]?.[key];
@@ -452,7 +452,7 @@ function initializeLanguageSelector() {
 }
 
 // Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('page-changed', () => {
     initializeLanguageSelector();
     // Initialize with stored language
     const storedLang = localStorage.getItem('language') || 'en';

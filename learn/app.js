@@ -230,14 +230,14 @@ function updateMissionsUI() {
 }
 
 // ---------------------------- Lessons & Modules ----------------------------
-function isLessonCompleted(moduleId, lessonId) { 
-    return progress[moduleId]?.[lessonId]; 
+function isLessonCompleted(moduleId, lessonId) {
+    return progress[moduleId]?.[lessonId];
 }
 
-function markLessonCompleted(moduleId, lessonId) { 
-    progress[moduleId] = progress[moduleId] || {}; 
-    progress[moduleId][lessonId] = true; 
-    saveProgressToAPI(); 
+function markLessonCompleted(moduleId, lessonId) {
+    progress[moduleId] = progress[moduleId] || {};
+    progress[moduleId][lessonId] = true;
+    saveProgressToAPI();
 }
 
 function isModuleUnlocked(moduleId) {
@@ -258,13 +258,13 @@ function showModules() {
     updateProgressUI();
 }
 
-    const sidebar = document.querySelector("nav.sidebar");
-    if (sidebar) sidebar.style.display = "flex";
+const sidebar = document.querySelector("nav.sidebar");
+if (sidebar) sidebar.style.display = "flex";
 
-    const discordBtn = document.querySelector(".discord-button");
-    if (discordBtn) discordBtn.style.left = "calc(260px + 1rem + 12px)";
+const discordBtn = document.querySelector(".discord-button");
+if (discordBtn) discordBtn.style.left = "calc(260px + 1rem + 12px)";
 
-    updateProgressUI();
+updateProgressUI();
 }
 
 function showLessonsList(moduleId) {
@@ -307,20 +307,20 @@ function showLesson(moduleId, lessonIndex) {
 
     lessonTitle.textContent = lesson.title;
     lessonContent.innerHTML = lesson.content || "";
- 
-if (lesson.quiz && lesson.quiz.length) {
-    quizSection.classList.remove("hidden");
-    submitQuizBtn.style.display = "inline-block";
-    buildQuiz(lesson.quiz);
-} else {
-    quizSection.classList.add("hidden");
-    submitQuizBtn.style.display = "none";
-}
+
+    if (lesson.quiz && lesson.quiz.length) {
+        quizSection.classList.remove("hidden");
+        submitQuizBtn.style.display = "inline-block";
+        buildQuiz(lesson.quiz);
+    } else {
+        quizSection.classList.add("hidden");
+        submitQuizBtn.style.display = "none";
+    }
 
 
     const sidebar = document.querySelector("nav.sidebar");
     if (sidebar) sidebar.style.display = "none";
-    
+
     document.querySelector("header").style.display = "none";
 
     const progressBarContainer = document.querySelector("#progress-section");
@@ -373,27 +373,27 @@ submitQuizBtn.addEventListener("click", () => {
         for (const radio of radios) {
             if (radio.checked) {
                 answered = true;
-                if (parseInt(radio.value) === quiz[i].correct) { 
-                    correctCount++; 
-                    removeMistake(currentModule.id, lesson.id, i); 
+                if (parseInt(radio.value) === quiz[i].correct) {
+                    correctCount++;
+                    removeMistake(currentModule.id, lesson.id, i);
                 } else {
                     addMistake(currentModule.id, lesson.id, i);
                 }
             }
         }
-        if (!answered) { 
-            alert(`Beantwoord vraag ${i + 1} eerst.`); 
-            return; 
+        if (!answered) {
+            alert(`Beantwoord vraag ${i + 1} eerst.`);
+            return;
         }
     }
 
     if (correctCount === quiz.length) {
         quizFeedback.textContent = "Goed gedaan! Alle antwoorden kloppen.";
-        if (!isLessonCompleted(currentModule.id, lesson.id)) { 
-            xp += 10; 
-            markLessonCompleted(currentModule.id, lesson.id); 
-            updateProgressUI(); 
-            saveProgressToAPI(); 
+        if (!isLessonCompleted(currentModule.id, lesson.id)) {
+            xp += 10;
+            markLessonCompleted(currentModule.id, lesson.id);
+            updateProgressUI();
+            saveProgressToAPI();
         }
         correctSound.play();
         nextLessonBtn.classList.remove("hidden");
@@ -405,16 +405,16 @@ submitQuizBtn.addEventListener("click", () => {
     }
 });
 
-function addMistake(moduleId, lessonId, questionIndex) { 
-    if (!mistakes.some(m => m.moduleId === moduleId && m.lessonId === lessonId && m.questionIndex === questionIndex)) { 
-        mistakes.push({ moduleId, lessonId, questionIndex }); 
-        saveProgressToAPI(); 
-    } 
+function addMistake(moduleId, lessonId, questionIndex) {
+    if (!mistakes.some(m => m.moduleId === moduleId && m.lessonId === lessonId && m.questionIndex === questionIndex)) {
+        mistakes.push({ moduleId, lessonId, questionIndex });
+        saveProgressToAPI();
+    }
 }
 
-function removeMistake(moduleId, lessonId, questionIndex) { 
-    mistakes = mistakes.filter(m => !(m.moduleId === moduleId && m.lessonId === lessonId && m.questionIndex === questionIndex)); 
-    saveProgressToAPI(); 
+function removeMistake(moduleId, lessonId, questionIndex) {
+    mistakes = mistakes.filter(m => !(m.moduleId === moduleId && m.lessonId === lessonId && m.questionIndex === questionIndex));
+    saveProgressToAPI();
 }
 
 // ---------------------------- Knoppen ----------------------------
@@ -430,10 +430,10 @@ if (nextLessonBtn) {
 }
 
 if (backToModulesBtn) {
-const backToAllBtn = document.getElementById("back-to-all-languages");
-backToAllBtn.addEventListener("click", () => {
-    window.location.href = "/learn/learn.html";
-});
+    const backToAllBtn = document.getElementById("back-to-all-languages");
+    backToAllBtn.addEventListener("click", () => {
+        window.location.href = "/learn/learn.html";
+    });
 }
 
 
@@ -471,7 +471,7 @@ function runCode(id, expectedOutput = "") {
 }
 
 
-document.addEventListener("DOMContentLoaded", async () => {
+document.addEventListener("page-changed", async () => {
 
     try {
         const res = await fetch(`${HOST}/api/session`, { credentials: "include" });
@@ -490,7 +490,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const lessonButtonsContainer = document.getElementById("lesson-buttons");
     if (!lessonButtonsContainer || !lessonsListSection) return;
 
-    const moduleId = window.location.pathname.split("/").pop().replace(".html","");
+    const moduleId = window.location.pathname.split("/").pop().replace(".html", "");
     currentModule = modulesData.find(m => m.id === moduleId);
     if (!currentModule) return;
 
@@ -510,7 +510,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 
-    // ------------------- Buttons -------------------
+// ------------------- Buttons -------------------
 const backToAllBtn = document.getElementById("back-to-all-languages");
 if (backToAllBtn) {
     backToAllBtn.addEventListener("click", () => {
@@ -519,42 +519,42 @@ if (backToAllBtn) {
 }
 
 
-    if (nextLessonBtn) {
-        nextLessonBtn.addEventListener("click", () => {
-            if (!currentModule) return;
-            if (currentLessonIndex + 1 < currentModule.lessons.length) {
-                showLesson(currentModule.id, currentLessonIndex + 1);
-            } else {
-                showModules();
-            }
-        });
-    }
+if (nextLessonBtn) {
+    nextLessonBtn.addEventListener("click", () => {
+        if (!currentModule) return;
+        if (currentLessonIndex + 1 < currentModule.lessons.length) {
+            showLesson(currentModule.id, currentLessonIndex + 1);
+        } else {
+            showModules();
+        }
+    });
+}
 
 
 
 //-------------------------html debugger---------------------------
 function checkFix(lessonId, exerciseIndex) {
-const htmlModule = modulesData.find(m => m.id === "html");
-if (!htmlModule) return;
-const lesson = htmlModule.lessons.find(l => l.id === lessonId);
-if (!lesson) return;
+    const htmlModule = modulesData.find(m => m.id === "html");
+    if (!htmlModule) return;
+    const lesson = htmlModule.lessons.find(l => l.id === lessonId);
+    if (!lesson) return;
 
-  const exercise = lesson.exercises[exerciseIndex - 1];
-  const textarea = document.getElementById(`code-editor-html-debug-${exerciseIndex}`);
-  const feedback = document.getElementById(`feedback-html-debug-${exerciseIndex}`);
-  const userCode = textarea.value.trim();
+    const exercise = lesson.exercises[exerciseIndex - 1];
+    const textarea = document.getElementById(`code-editor-html-debug-${exerciseIndex}`);
+    const feedback = document.getElementById(`feedback-html-debug-${exerciseIndex}`);
+    const userCode = textarea.value.trim();
 
-  if (userCode.replace(/\s+/g, '') === exercise.expectedFix.replace(/\s+/g, '')) {
-    feedback.innerHTML = `<p class="correct">✅ Correct! Nicely done.</p>`;
-    
-    if (!isLessonCompleted(htmlModule.id, lesson.id)) {
-        xp += 10;
-        markLessonCompleted(htmlModule.id, lesson.id);
-        updateProgressUI();
-        saveProgressToAPI();
-        showMascotMessage("You completed the exercise and earned 10 XP!");
+    if (userCode.replace(/\s+/g, '') === exercise.expectedFix.replace(/\s+/g, '')) {
+        feedback.innerHTML = `<p class="correct">✅ Correct! Nicely done.</p>`;
+
+        if (!isLessonCompleted(htmlModule.id, lesson.id)) {
+            xp += 10;
+            markLessonCompleted(htmlModule.id, lesson.id);
+            updateProgressUI();
+            saveProgressToAPI();
+            showMascotMessage("You completed the exercise and earned 10 XP!");
+        }
+    } else {
+        feedback.innerHTML = `<p class="incorrect">❌ Not quite right.<br>${exercise.hint}</p>`;
     }
-  } else {
-    feedback.innerHTML = `<p class="incorrect">❌ Not quite right.<br>${exercise.hint}</p>`;
-  }
 }
