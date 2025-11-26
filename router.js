@@ -11,8 +11,8 @@ window.currentRoute = '/';
 const routerRules = [
     {
         type: 'redirect',
-        from: '/verify-success.html',
-        to: '/home.html'
+        from: 'verify-success.html',
+        to: 'home.html'
     },
     // {
     //     type: 'inputs',
@@ -92,7 +92,6 @@ function updateLinks() {
                 const cssContent = await fetch(window.currentRoute.replace(/(.*\/).*/, '') + href).then(res => res.text());
                 injectCSS(cssContent, 'PageStyle');
             }
-            injectCSS(cssContent, 'PageStyle');
         }
         link.setAttribute('routed', 'true');
     });
@@ -101,6 +100,13 @@ function updateLinks() {
 
 // dit is de navigatie zelf
 async function navigateTo(page) {
+    // check voor redirects
+    window.routerConfig.rederects.forEach(redirect => {
+        if (page.replace(/^\/+/, '') === redirect.from.replace(/^\/+/, '')) {
+            page = redirect.to;
+        }
+    });
+
     // maak de route correct
     // de regex zorgt ervoor dat er geen / aan het begin staat
     const route = 'pages/' + page.replace(/^\/+/, '');
@@ -151,6 +157,9 @@ async function navigateTo(page) {
 
 // we doen een setup bij het laden van de pagina
 window.addEventListener('load', async () => {
+    // parse de config
+    parseConfig();
+
     // check de url voor een route parameter
     let url = new URL(window.location.href);
     let route = url.searchParams.get('route') || '/home.html';
@@ -162,7 +171,22 @@ window.addEventListener('load', async () => {
     await navigateTo(route);
 });
 function parseConfig() {
-    // todo: maak dit
+    window.routerConfig = { rederects: [], inputs: [] };
+    window.routerConfig.rederects = [];
+    window.routerConfig.inputs = [];
+    routerRules.forEach(rule => {
+        if (rule.type === 'redirect') {
+            window.routerConfig.rederects.push({
+                from: rule.from,
+                to: rule.to
+            });
+        } else if (rule.type === 'inputs') {
+            window.routerConfig.inputs.push({
+                from: rule.from,
+                to: rule.to
+            });
+        }
+    });
 }
 
 
